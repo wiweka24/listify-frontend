@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Button from './button';
 
 const Nav = () => {
-    let Links =[
-      {name:"HOME",link:"/"},
-      {name:"CALENDAR",link:"/"},
-      {name:"ABOUT",link:"/"},
-    ];
-    let [open,setOpen]=useState(false);
+  let Links =[
+    {name:"HOME",link:"/"},
+    {name:"CALENDAR",link:"/"},
+    {name:"ABOUT",link:"/"},
+  ];
+  let [open,setOpen]=useState(false);
+  
   return (
     <div className='shadow-md w-full fixed top-0 left-0'>
       <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>

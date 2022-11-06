@@ -1,20 +1,27 @@
-import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function Login() {
-  const[activity, setActivity] = useState([])
-  const URL = "http://localhost:5000/activity"
+  const axiosInstance = axios.create({
+    withCredentials: true
+  })
+  const URL = "http://localhost:5000/user/login"
 
-  useEffect(() => {    
-    axios
-      .get(URL)
-      .then(res => {
-        setActivity(res.data)
-        console.log(res)
-      })
-      .catch(err => {
-      })
-    }, [])
+  const Login = async () => {
+    try {
+        const res = await axiosInstance.post(
+          URL, 
+          {
+            "email": "wiweka24@mail.com",
+            "password": "Wiweka12345#"
+          })
+        console.log(res.data);
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+    }
+  };
+
+  Login()
 
   return (
     <div>Login</div>

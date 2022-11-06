@@ -6,6 +6,7 @@ import {
 import Login from "./pages/Login"
 import Activity from './pages/Activity'
 import Nav from './components/nav'
+import Register from './pages/Register'
 
 export default function App() {
   return (

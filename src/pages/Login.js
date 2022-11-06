@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import LoginForm from '../components/login-form'
 
 export default function Login() {
   const[activity, setActivity] = useState([])
@@ -22,7 +23,7 @@ export default function Login() {
         to be hide
       </div>
       <div className='w-full flex item-center items-center justify-center lg:w-1/2'>
-        form
+        <LoginForm/>
       </div>
     </div>
     

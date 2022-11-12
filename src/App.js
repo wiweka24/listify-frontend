@@ -14,6 +14,7 @@ export default function App() {
       <Nav/>
       <Routes>
         <Route path='/' element={<Login/>} />
+        <Route path='/Reg' element={<Register/>} />
         <Route path='/1' element={<Activity/>} />
       </Routes>
     </Router>

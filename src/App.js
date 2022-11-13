@@ -4,7 +4,7 @@ import {
   Routes
 } from 'react-router-dom'
 import Login from "./pages/Login"
-import Activity from './pages/Activity'
+import Activities from './pages/Activity'
 import Nav from './components/nav'
 import Register from './pages/Register'
 import Profile from './pages/Profile'

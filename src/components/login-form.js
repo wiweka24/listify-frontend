@@ -43,19 +43,19 @@ export default function LoginForm(){
   return(
     <div className='bg-white px-10 py-10 rounded-3xl border-2 border-gray-100'>
       <form onSubmit={handleSubmit}>
-        <h1 className='flex justify-center items-center text-4xl font-semibold'>Log In</h1>
-        <div className='mt-3 flex justify-center items-center'>
-          <p className='text-lg font-medium'>Belum punya akun? &nbsp;</p>
+        <h1 className='flex justify-center items-center text-3xl font-semibold'>Log In</h1>
+        <div className='mt-4 flex justify-center items-center'>
+          <p className='text-base font-medium'>Don't have an account yet? &nbsp;</p>
           <Link 
             to="/register"
-            className='text-lg font-medium text-blue-500'
+            className='text-base font-medium text-blue-500'
             >Register
           </Link>
         </div>
         <div className='mt-8'>
-          {/* Email */}
-          <div>
-            <label className='text-lg font-medium'>Email</label>
+        {/* Email */}
+         <div>
+            <label className='text-base font-medium'>Email</label>
             <input
               id='email'
               className='w-full rounded-xl border-2 border-gray-100 p-2 mt-1 bg-transparent'
@@ -64,10 +64,10 @@ export default function LoginForm(){
               onChange={handleChange}
               value={values.email}
             />
-          </div>
-          {/* Password */}
+         </div>
+         {/* Password */}
           <div className='mt-3'>
-            <label className='text-lg font-medium'>Password</label>
+            <label className='text-base font-medium'>Password</label>
             <input
               id='password'
               className='w-full rounded-xl border-2 border-gray-100 p-2 mt-1 bg-transparent'
@@ -92,7 +92,7 @@ export default function LoginForm(){
         <div className='mt-8 flex flex-col'>
           <button 
             type="submit" 
-            className='active:scale-[0.98] py-1.5 rounded-xl bg-blue-500 text-white text-lg font-semibold'
+            className='active:scale-[0.98] py-1.5 rounded-xl bg-blue-500 text-white text-lg hover:bg-blue-400 duration-500 font-semibold'
             >Log In
           </button>
         </div>

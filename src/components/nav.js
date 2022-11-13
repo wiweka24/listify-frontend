@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Logo from '../img/note.png'
 
 export default function Nav() {
   const Links = [
@@ -13,7 +14,7 @@ export default function Nav() {
       <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
         <div className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
           <span className='text-3xl text-indigo-600 mr-1 pt-2'>
-            <img class="w-8 " src="./note.png" alt="Logo"/>
+            <img class="w-8 " src={Logo} alt="Logo"/>
           </span>
           Listify
         </div>

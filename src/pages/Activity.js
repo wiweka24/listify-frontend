@@ -8,17 +8,29 @@ export default function Activity() {
       withCredentials: true
     })
 
-    useEffect(() => {    
-      axiosInstance
-        .get(URL)
-        .then(res => {
+    // useEffect(() => {    
+    //   axiosInstance
+    //     .get(URL)
+    //     .then(res => {
+    //       setActivity(res.data)
+    //       console.log(activity)
+    //     })
+    //     .catch(err => {
+    //       console.log(err)
+    //     })
+    // }, [])
+
+    useEffect(() => {  
+      (async () => {
+        try {
+          const res = await axiosInstance.get(URL)
           setActivity(res.data)
-          console.log(res)
-        })
-        .catch(err => {
+        } catch(err) {
           console.log(err)
-        })
-      }, [])
+        }
+      })()
+    }, [])
+    console.log(activity)
 
   return (
     <div>Activity</div>

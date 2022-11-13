@@ -1,6 +1,7 @@
 import { logRoles } from '@testing-library/react'
 import bgImg from '../img/to-do-list.png'
 import LoginForm from '../components/login-form'
+import Activity from '../components/activity'
 
 export default function Login() {
 

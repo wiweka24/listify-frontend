@@ -3,37 +3,37 @@ import React from "react";
 export default function RegisterForm(){
     return(
         <div className='bg-white px-10 py-10 rounded-3xl border-2 border-gray-100'>
-            <h1 className='flex justify-center item-center text-4xl font-semibold'>Register</h1>
-            <div className='mt-3 flex justify-center item-center'>
+            <h1 className='flex justify-center item-center text-3xl font-semibold'>Register</h1>
+            <div className='mt-4 flex justify-center item-center'>
                 <div>
-                    <p className='text-lg font-medium'>Sudah punya akun? &nbsp;</p>
+                    <p className='text-base font-medium'>Already have an account? &nbsp;</p>
                 </div>
-                <button className='text-lg font-medium text-blue-500'>Log In</button>
+                <button className='text-base font-medium text-blue-500'>Log In</button>
             </div>
             <div className='mt-8'>
                 <div className='mt-3'>
-                    <label className='text-lg font-medium'>First Name</label>
+                    <label className='text-base font-medium'>First Name</label>
                     <input
                         className='w-full rounded-xl border-2 border-gray-100 p-2 mt-1 bg-transparent'
                         placeholder=''
                     />
                 </div>
                 <div className='mt-3'>
-                    <label className='text-lg font-medium'>Last Name</label>
+                    <label className='text-base font-medium'>Last Name</label>
                     <input
                         className='w-full rounded-xl border-2 border-gray-100 p-2 mt-1 bg-transparent'
                         placeholder=''
                     />
                 </div>
                 <div className='mt-3'>
-                    <label className='text-lg font-medium'>Email</label>
+                    <label className='text-base font-medium'>Email</label>
                     <input
                         className='w-full rounded-xl border-2 border-gray-100 p-2 mt-1 bg-transparent'
                         placeholder=''
                     />
                 </div>
                 <div className='mt-3'>
-                    <label className='text-lg font-medium'>Password</label>
+                    <label className='text-base font-medium'>Password</label>
                     <input
                         className='w-full rounded-xl border-2 border-gray-100 p-2 mt-1 bg-transparent'
                         placeholder=''
@@ -51,7 +51,7 @@ export default function RegisterForm(){
                 </div>
             </div>
             <div className='mt-8 flex flex-col'>
-                <button className='active:scale-[0.98] py-1.5 rounded-xl bg-blue-500 text-white text-lg font-semibold'>Register</button>
+                <button className='active:scale-[0.98] py-1.5 bg-blue-500 text-white rounded md:ml-8 hover:bg-blue-400 duration-500'>Register</button>
             </div>
         </div>
     )

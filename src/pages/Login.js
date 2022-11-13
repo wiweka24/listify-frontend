@@ -10,7 +10,7 @@ export default function Login() {
       <div className="hidden lg:flex h-full w-1/2 items-center justify-center bg-gray-200">
         <img class="max-w-none" src={bgImg} alt="bgImg"/>
       </div>
-      <div className='w-full flex item-center items-center justify-center lg:w-1/2'>
+      <div className='w-full flex items-center justify-center lg:w-1/2'>
         <LoginForm/>
       </div>
     </div>

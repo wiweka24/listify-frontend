@@ -1,7 +1,38 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import Logo from '../img/note.png'
 
 export default function Nav() {
+  let linkto = '/'
+  let username = 'LOGIN'
+  const [status, setStatus] = useState()
+  const navigate = useNavigate()
+  const URL = "http://localhost:5000/user/"
+  const axiosInstance = axios.create({
+    withCredentials: true
+  })
+  
+  useEffect(() => {  
+    (async () => {
+      try {
+        const res = await axiosInstance.get(URL+'profile')
+        setStatus(res.data)
+      } catch(err) {
+        console.log(err)
+      }
+    })()
+  }, [axiosInstance])
+
+  if (status !== undefined && status !== null){
+    username = status.username
+    linkto = '/profile'
+  }
+
+  const handleClick = () => {
+    navigate(linkto)
+  }
+
   const Links = [
     {name:"HOME",link:"/"},
     {name:"CALENDAR",link:"/"},
@@ -31,8 +62,10 @@ export default function Nav() {
             </li>
             ))
           }
-          <button className='active:scale-[0.98] bg-blue-500 text-white py-2 px-6 rounded md:ml-8 hover:bg-blue-400 duration-500'>
-            LOGIN
+          <button 
+            className='active:scale-[0.98] bg-blue-500 text-white py-2 px-6 rounded md:ml-8 hover:bg-blue-400 duration-500'
+            onClick={handleClick}
+            >{username}
           </button>
         </ul>
       </div>

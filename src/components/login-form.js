@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function LoginForm(){
   const axiosInstance = axios.create({
@@ -8,7 +8,7 @@ export default function LoginForm(){
   })
   const URL = "http://localhost:5000/user/login"
   
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -33,7 +33,7 @@ export default function LoginForm(){
         })
       console.log(res.data)
 
-      navigate("/1")
+      navigate("/activity")
   
     } catch (err) {
       console.error(err);
@@ -43,12 +43,14 @@ export default function LoginForm(){
   return(
     <div className='bg-white px-10 py-10 rounded-3xl border-2 border-gray-100'>
       <form onSubmit={handleSubmit}>
-        <h1 className='flex justify-center item-center text-3xl font-semibold'>Log In</h1>
-        <div className='mt-4 flex justify-center item-center'>
-            <div>
-                <p className='text-base font-medium'>Don't have an account yet? &nbsp;</p>
-            </div>
-            <a href= "/#/Reg" className='text-base font-medium text-blue-500'>Register</a>
+        <h1 className='flex justify-center items-center text-3xl font-semibold'>Log In</h1>
+        <div className='mt-4 flex justify-center items-center'>
+          <p className='text-base font-medium'>Don't have an account yet? &nbsp;</p>
+          <Link 
+            to="/register"
+            className='text-base font-medium text-blue-500'
+            >Register
+          </Link>
         </div>
         <div className='mt-8'>
         {/* Email */}
@@ -76,7 +78,7 @@ export default function LoginForm(){
             />
           </div>
           {/* Remember Me */}
-          <div className='mt-5 flex justify-between item-center'>
+          <div className='mt-5 flex justify-between items-center'>
             <div>
               <input 
                 type='checkbox'
@@ -88,7 +90,11 @@ export default function LoginForm(){
           </div>
         </div>
         <div className='mt-8 flex flex-col'>
-          <button type="submit" className='active:scale-[0.98] py-1.5 bg-blue-500 text-white rounded hover:bg-blue-400 duration-500' >Log In</button>
+          <button 
+            type="submit" 
+            className='active:scale-[0.98] py-1.5 rounded-xl bg-blue-500 text-white text-lg hover:bg-blue-400 duration-500 font-semibold'
+            >Log In
+          </button>
         </div>
       </form>
     </div>

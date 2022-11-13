@@ -8,7 +8,7 @@ export default function Register() {
         <img class="max-w-none" src={bgImg} alt="bgImg"/>
       </div>
       <div className='w-full flex item-center items-center justify-center lg:w-1/2'>
-        <RegisterForm/>
+      <RegisterForm/>
       </div>
     </div>  
   )

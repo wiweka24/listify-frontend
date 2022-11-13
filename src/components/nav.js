@@ -13,9 +13,9 @@ export default function Nav() {
       <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
         <div className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
           <span className='text-3xl text-indigo-600 mr-1 pt-2'>
-            <ion-icon name="logo-ionic"></ion-icon>
+            <img class="w-8 " src="./note.png" alt="Logo"/>
           </span>
-          Designer
+          Listify
         </div>
         
         <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>
@@ -30,7 +30,7 @@ export default function Nav() {
             </li>
             ))
           }
-          <button className='bg-indigo-600 text-white py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 duration-500'>
+          <button className='active:scale-[0.98] bg-blue-500 text-white py-2 px-6 rounded md:ml-8 hover:bg-blue-400 duration-500'>
             LOGIN
           </button>
         </ul>

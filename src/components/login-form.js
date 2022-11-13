@@ -48,7 +48,7 @@ export default function LoginForm(){
             <div>
                 <p className='text-base font-medium'>Don't have an account yet? &nbsp;</p>
             </div>
-            <button className='text-base font-medium text-blue-500'>Register</button>
+            <a href= "/#/Reg" className='text-base font-medium text-blue-500'>Register</a>
         </div>
         <div className='mt-8'>
         {/* Email */}
@@ -88,7 +88,7 @@ export default function LoginForm(){
           </div>
         </div>
         <div className='mt-8 flex flex-col'>
-          <button type="submit" className='active:scale-[0.98] py-1.5 bg-blue-500 text-white rounded md:ml-8 hover:bg-blue-400 duration-500'>Log In</button>
+          <button type="submit" className='active:scale-[0.98] py-1.5 bg-blue-500 text-white rounded hover:bg-blue-400 duration-500' >Log In</button>
         </div>
       </form>
     </div>

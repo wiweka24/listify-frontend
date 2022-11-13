@@ -8,18 +8,6 @@ export default function Activity() {
       withCredentials: true
     })
 
-    // useEffect(() => {    
-    //   axiosInstance
-    //     .get(URL)
-    //     .then(res => {
-    //       setActivity(res.data)
-    //       console.log(activity)
-    //     })
-    //     .catch(err => {
-    //       console.log(err)
-    //     })
-    // }, [])
-
     useEffect(() => {  
       (async () => {
         try {
@@ -29,7 +17,7 @@ export default function Activity() {
           console.log(err)
         }
       })()
-    }, [])
+    }, [axiosInstance])
     console.log(activity)
 
   return (

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function RegisterForm(){
   const axiosInstance = axios.create({
@@ -45,10 +45,12 @@ export default function RegisterForm(){
       <form onSubmit={handleSubmit}>
         <h1 className='flex justify-center item-center text-4xl font-semibold'>Register</h1>
         <div className='mt-3 flex justify-center item-center'>
-          <div>
-            <p className='text-lg font-medium'>Sudah punya akun? &nbsp;</p>
-          </div>
-          <button className='text-lg font-medium text-blue-500'>Log In</button>
+          <p className='text-lg font-medium'>Sudah punya akun? &nbsp;</p>
+          <Link 
+            to="/"
+            className='text-lg font-medium text-blue-500'
+            >Log In
+          </Link>
         </div>
         <div className='mt-8'>
           <div className='mt-3'>
@@ -102,7 +104,11 @@ export default function RegisterForm(){
           </div>
         </div>
         <div className='mt-8 flex flex-col'>
-          <button type="submit" className='active:scale-[0.98] py-1.5 rounded-xl bg-blue-500 text-white text-lg font-semibold'>Register</button>
+          <button 
+            type="submit" 
+            className='active:scale-[0.98] py-1.5 rounded-xl bg-blue-500 text-white text-lg font-semibold'
+            >Register
+          </button>
         </div>
       </form>
     </div>

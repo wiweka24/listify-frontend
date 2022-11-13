@@ -1,12 +1,11 @@
 import React from "react";
 
-
-export default function Activity(ntahlah){
+export default function Activity(){
     return(
         <button className="w-full hover:bg-blue-500 group hover:ring-blue-500 hover:shadow-md md:p-0 bg-white ring-1 ring-slate-200 shadow-sm">
             <article className="w-auto flex space-x-6 my-7 mx-8">
                 {/* di sini akan ada status */}
-                <div className="w-[2%] py-10 px-1 rounded rounded-full bg-red-500"></div>
+                <div className="w-[2%] py-10 px-1 rounded-full bg-red-500"></div>
                 <div className="w-[98%]">
                     <div className='flex items-center'>
                         <h1 class="mr-3 group-hover:text-white font-semibold text-lg text-slate-900">Title of Activity</h1>
@@ -27,8 +26,7 @@ export default function Activity(ntahlah){
                         {/* <dd class="group-hover:text-blue-200 text-sm text-slate-500">{activity.actDescription}</dd> */}
                     </div>
                 </div>
-            </article>
-            
+            </article>    
         </button>
     )
 }

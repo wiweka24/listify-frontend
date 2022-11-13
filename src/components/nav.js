@@ -22,11 +22,14 @@ export default function Nav() {
         console.log(err)
       }
     })()
-  }, [axiosInstance])
+  }, [axiosInstance, URL])
 
   if (status !== undefined && status !== null){
     username = status.username
     linkto = '/profile'
+  } else {
+    username = 'LOGIN'
+    linkto = '/'
   }
 
   const handleClick = () => {
@@ -44,8 +47,8 @@ export default function Nav() {
     <div className='shadow-md w-full fixed top-0 left-0'>
       <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
         <div className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
-          <span className='text-3xl text-indigo-600 mr-1 pt-2'>
-            <img class="w-8 " src={Logo} alt="Logo"/>
+          <span className='text-3xl text-indigo-600 mr-1'>
+            <img className="w-8 " src={Logo} alt="Logo"/>
           </span>
           Listify
         </div>

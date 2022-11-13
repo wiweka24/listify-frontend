@@ -4,6 +4,7 @@ import {
   Routes
 } from 'react-router-dom'
 import Login from "./pages/Login"
+import Activity from './pages/Activity'
 import Nav from './components/nav'
 import Register from './pages/Register'
 
@@ -13,6 +14,8 @@ export default function App() {
       <Nav/>
       <Routes>
         <Route path='/' element={<Login/>} />
+        <Route path='/Reg' element={<Register/>} />
+        <Route path='/1' element={<Activity/>} />
       </Routes>
     </Router>
   )

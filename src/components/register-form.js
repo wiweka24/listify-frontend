@@ -48,7 +48,7 @@ export default function RegisterForm(){
             <div>
                 <p className='text-base font-medium'>Already have an account? &nbsp;</p>
             </div>
-            <button className='text-base font-medium text-blue-500'>Log In</button>
+            <a href="/#/" className='text-base font-medium text-blue-500'>Log In</a>
         </div>
         {/* Username */}
         <div className='mt-8'>
@@ -99,7 +99,7 @@ export default function RegisterForm(){
           </div>
         </div>
         <div className='mt-8 flex flex-col'>
-          <button type="submit" className='active:scale-[0.98] py-1.5 bg-blue-500 text-white rounded md:ml-8 hover:bg-blue-400 duration-500'>Register</button>
+          <button type="submit" className='active:scale-[0.98] py-1.5 bg-blue-500 text-white rounded hover:bg-blue-400 duration-500'>Register</button>
         </div>
       </form>
     </div>

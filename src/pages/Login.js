@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { logRoles } from '@testing-library/react'
+import bgImg from '../img/to-do-list.png'
 import LoginForm from '../components/login-form'
 import Activity from '../components/activity'
 
 export default function Login() {
-  const[activity, setActivity] = useState([])
-  const URL = "http://localhost:5000/activity"
-
-  useEffect(() => {    
-    axios
-      .get(URL)
-      .then(res => {
-        setActivity(res.data)
-        console.log(res)
-      })
-      .catch(err => {
-      })
-    }, [])
 
   return (
-    <div className='flex items-center w-full h-screen'>
-      <div className='hidden lg:flex h-full w-1/2 items-center justify-center bg-gray-200'>
-        to be hide
+    <div className='flex w-full h-screen'>
+      <div className="hidden lg:flex h-full w-1/2 items-center justify-center bg-gray-200">
+        <img class="max-w-none" src={bgImg} alt="bgImg"/>
       </div>
       <div className='w-full flex item-center items-center justify-center lg:w-1/2'>
         <LoginForm/>

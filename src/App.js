@@ -4,7 +4,7 @@ import {
   Routes
 } from 'react-router-dom'
 import Login from "./pages/Login"
-import Activity from './pages/Activity_Test'
+import Activities from './pages/Activity'
 import Nav from './components/nav'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
@@ -14,10 +14,10 @@ export default function App() {
     <Router>
       <Nav/>
       <Routes>
-        <Route path='/' element={<Login/>} />
-        <Route path='/register' element={<Register/>} />
-        <Route path='/activity' element={<Activity/>} />
-        <Route path='/profile' element={<Profile/>} />
+        <Route path='/' element={<Activity/>} />
+        {/* <Route path='/register' element={<Register/>} /> */}
+        {/* <Route path='/activity' element={<Activity/>} /> */}
+        {/* <Route path='/profile' element={<Profile/>} /> */}
       </Routes>
     </Router>
   )

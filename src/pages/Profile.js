@@ -20,6 +20,7 @@ export default function Profile() {
       }
     })()
   }, [])
+  
 
   const handleClick = async (e) => {
     try{

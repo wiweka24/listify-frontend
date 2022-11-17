@@ -56,11 +56,7 @@ export default function Activity({searchData}) {
                 </div>
               </article>  
             </button>
-<<<<<<< HEAD
-            <div className='h-full items-center justify-center'>
-=======
-
->>>>>>> c7ed7e1f38809b421259c9e3d1b37232b9a6d37e
+            
             <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
               <div className="py-6 px-3 text-star mx-auto items-center justify-center">
                 <div className="flex justify-between font-bold text-2xl text-white w-[98%] py-8 px-6 rounded-xl bg-blue-500">
@@ -130,12 +126,6 @@ export default function Activity({searchData}) {
                 </div>
               </div>
             </Modal>
-<<<<<<< HEAD
-            </div>
-                        
-=======
-
->>>>>>> c7ed7e1f38809b421259c9e3d1b37232b9a6d37e
         </Fragment>
         </li>
       ))

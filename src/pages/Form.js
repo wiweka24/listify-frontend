@@ -1,4 +1,4 @@
-import ActivityForm from '../components/activity-form'
+import ActivityForm from '../components/activity-form-sementara'
 
 export default function Form() {
   return (

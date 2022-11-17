@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import ActivityList from '../components/activity-list'
 import Activity from '../components/activity'
+import Modal from '../components/modal'
 
 export default function Activities() {
   return (

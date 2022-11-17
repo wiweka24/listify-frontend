@@ -8,6 +8,7 @@ import Activities from './pages/Activity'
 import Nav from './components/nav'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
+import Modal from './components/modal'
 
 export default function App() {
   return (

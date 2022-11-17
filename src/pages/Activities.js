@@ -23,7 +23,7 @@ export default function Activities() {
               <SearchIcon/>
             </div>
             <input 
-              className="mx-2 appearance-none text-sm outline-none bg-transparent placeholder-white focus:placeholder-blue-500"    
+              className="mx-2 appearance-none text-sm text-white outline-none bg-transparent placeholder-white focus:placeholder-blue-500"    
               type="text" 
               aria-label="Search projects" 
               placeholder="Search..."

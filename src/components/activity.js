@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect} from 'react'
-import axios from 'axios'
+import { axiosInstance } from "./axiosInstance";
 import Modal from "../components/modal"
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 
@@ -7,9 +7,6 @@ export default function Activity({searchData}) {
   const [activity, setActivity] = useState([])
   const [showModal, setShowModal] = useState(false)
   const URL = "http://localhost:5000/activity"
-  const axiosInstance = axios.create({
-    withCredentials: true
-  })
 
   useEffect(() => {  
     (async () => {

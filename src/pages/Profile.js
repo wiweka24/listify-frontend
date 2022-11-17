@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react'
 import { ProfileIcon } from '../img'
-import axios from 'axios'
+import { axiosInstance } from "../components/axiosInstance";
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
   const navigate = useNavigate()
   const[user, setUser] = useState([])
   const URL = "http://localhost:5000/user/"
-  const axiosInstance = axios.create({
-    withCredentials: true
-  })
   
   useEffect(() => {  
     (async () => {

@@ -23,5 +23,5 @@ export default function ActivityList(){
         </div>
       </div>
     </div>
-  )
+  )
 }

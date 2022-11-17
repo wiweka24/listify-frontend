@@ -1,13 +1,12 @@
-//import ActivityList from '../components/activity-list'
 import Activity from '../components/activity'
 import { SearchIcon, AddBtnIcon } from "../img"
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Activities() {
-  const [data, setData] = useState('');
+  const [data, setData] = useState('')
 
   const handleChange = (e) => {
-    //convert input text to lower cas
     var lowerCase = e.target.value.toLowerCase();
     setData(lowerCase)
   }
@@ -29,12 +28,15 @@ export default function Activities() {
                   aria-label="Search projects" 
                   placeholder="Search..."
                   onChange={handleChange}
-                >  
+                  >  
                 </input>
               </div>
-              <button className="flex items-center py-2 px-4 rounded ">
+              <Link  
+                className="flex items-center py-2 px-4 rounded "
+                to='/form'
+                >
                 <AddBtnIcon/>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

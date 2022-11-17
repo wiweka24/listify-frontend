@@ -4,7 +4,7 @@ export default function Form() {
   return (
     <div className='w-full h-full'>
       <div className='w-full flex item-center items-center justify-center'>
-      <ActivityForm/>
+        <ActivityForm/>
       </div>
     </div>  
   )

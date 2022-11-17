@@ -22,8 +22,8 @@ export default function App() {
         <Route path='/register' element={<Register/>} />
         <Route path='/activities' element={<Activities/>} />
         <Route path='/profile' element={<Profile/>} />
-        <Route path='/*' element={<NotFound/>} />
         <Route path='/form' element={<Form/>} />
+        <Route path='/*' element={<NotFound/>} />
       </Routes>
     </Router>
   )

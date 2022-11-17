@@ -3,7 +3,7 @@ import axios from 'axios'
 import Modal from "../components/modal"
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 
-export default function Activity_Test({searchData}) {
+export default function Activity({searchData}) {
   const [activity, setActivity] = useState([])
   const [showModal, setShowModal] = useState(false)
   const URL = "http://localhost:5000/activity"
@@ -14,15 +14,14 @@ export default function Activity_Test({searchData}) {
   useEffect(() => {  
     (async () => {
     try {
-      const res = await axiosInstance.get(URL)
-      setActivity(res.data)
+      const res = await axiosInstance.get(URL + '?search='
+        + searchData)
+      setActivity(res.data.data.activity)
     } catch(err) {
       console.log(err)
     }
     })()
-  }, [])
-
-  console.log(searchData)
+  }, [searchData])
 
   return (
     <ul>
@@ -30,7 +29,10 @@ export default function Activity_Test({searchData}) {
       activity.map((act)=>(
         <li key={act._id}>
           <Fragment>
-            <button className="w-full hover:bg-blue-500 group hover:ring-blue-500 hover:shadow-md md:p-0 bg-white ring-1 ring-slate-200 shadow-sm" onClick={() => setShowModal(true) }>
+
+            <button 
+              className="w-full hover:bg-blue-500 group hover:ring-blue-500 hover:shadow-md md:p-0 bg-white ring-1 ring-slate-200 shadow-sm" 
+              onClick={() => setShowModal(true) }>
               <article className="w-auto flex space-x-6 my-7 mx-8">
                 {/* di sini akan ada status */}
                 <div className="w-[0.5%] py-10 px-1 rounded-full bg-red-500"></div>
@@ -54,7 +56,11 @@ export default function Activity_Test({searchData}) {
                 </div>
               </article>  
             </button>
+<<<<<<< HEAD
             <div className='h-full items-center justify-center'>
+=======
+
+>>>>>>> c7ed7e1f38809b421259c9e3d1b37232b9a6d37e
             <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
               <div className="py-6 px-3 text-star mx-auto items-center justify-center">
                 <div className="flex justify-between font-bold text-2xl text-white w-[98%] py-8 px-6 rounded-xl bg-blue-500">
@@ -124,13 +130,16 @@ export default function Activity_Test({searchData}) {
                 </div>
               </div>
             </Modal>
+<<<<<<< HEAD
             </div>
                         
+=======
+
+>>>>>>> c7ed7e1f38809b421259c9e3d1b37232b9a6d37e
         </Fragment>
         </li>
       ))
     }
-    </ul>
-        
+    </ul>  
   )
 }

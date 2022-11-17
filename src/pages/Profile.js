@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react'
 import { ProfileIcon } from '../img'
-import axios from 'axios'
+import { axiosInstance } from "../components/axiosInstance";
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
   const navigate = useNavigate()
   const[user, setUser] = useState([])
   const URL = "http://localhost:5000/user/"
-  const axiosInstance = axios.create({
-    withCredentials: true
-  })
   
   useEffect(() => {  
     (async () => {
@@ -27,7 +24,7 @@ export default function Profile() {
     try{
       const res = await axiosInstance.post(URL+'logout')
       console.log(res.data)
-      navigate("/")
+      navigate("/login")
     } catch (err) {
       console.error(err);
     }

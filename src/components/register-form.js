@@ -1,11 +1,8 @@
-import axios from "axios";
+import { axiosInstance } from "./axiosInstance";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function RegisterForm(){
-  const axiosInstance = axios.create({
-    withCredentials: true
-  })
   const URL = "http://localhost:5000/user/signup"
   
   const navigate = useNavigate();

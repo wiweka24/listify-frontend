@@ -16,6 +16,6 @@ export default function Modal({isVisible, onClose, children}) {
                     {children}
                 </div>
             </div>
-        </div> 
-    )
+        </div>
+    )
 }

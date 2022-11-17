@@ -7,7 +7,7 @@ export default function ActivityList(){
         <h1 className='justify-center py-4 px-5 item-center text-3xl font-bold'>Activity List</h1>
         <div className="flex relative items-center">
           <div className="flex items-center focus:ring-2 focus:ring-blue-500 focus:outline-none bg-blue-500 leading-6 h-10 rounded-full ring-1 ring-slate-200 shadow-sm">
-            <div className="ml-3">
+            <div className="ml-3 w-5 h-5">
               <SearchIcon/>
             </div>
             <input 

@@ -61,12 +61,12 @@ export default function Activity({searchData}) {
                     </div>
                     <div className='relative'>
                         <button>
-                            <div className="ml-2 w-8 h-8">
+                            <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                                 <EditIcon/>
                             </div>
                         </button>
                         <button>
-                            <div className="ml-2 w-8 h-8">
+                            <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                                 <DeleteIcon/>
                             </div>
                         </button> 

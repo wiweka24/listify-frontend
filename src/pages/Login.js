@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { LoginImg } from '../img'
+import LoginForm from '../components/login-form'
 
 export default function Login() {
-  const[activity, setActivity] = useState([])
-  const URL = "http://localhost:5000/activity"
-
-  useEffect(() => {    
-    axios
-      .get(URL)
-      .then(res => {
-        setActivity(res.data)
-        console.log(res)
-      })
-      .catch(err => {
-      })
-    }, [])
 
   return (
-    <div>Login</div>
+    <div className='flex w-full h-screen -mt-[80px]'>
+      <div className="hidden lg:flex h-full w-1/2 items-center justify-center bg-gray-200">
+        <img class="max-w-none" src={LoginImg} alt="bgImg"/>
+      </div>
+      <div className='w-full flex items-center justify-center lg:w-1/2'>
+        <LoginForm/>
+      </div>
+    </div>  
   )
 }

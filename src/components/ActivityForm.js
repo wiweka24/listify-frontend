@@ -74,7 +74,7 @@ export default function ActivityForm(){
                 <h3 className='text-3xl font-bold'>Description</h3>
                 <input 
               className='py-1 px-2 w-full h-40 border-2 rounded-lg border-gray-500'
-              //value={activity.actActivity}
+              //value={activity.actDescription}
               //readOnly
               />
               </div>
@@ -83,7 +83,7 @@ export default function ActivityForm(){
                 Category
             <input
                 className="font-normal py-1 px-1 w-full border-2 rounded-lg border-gray-500"
-                // id={values.category}
+                // id={values.actcategory}
                 // onChange={handleChange('category')}
                 placeholder="Input Category"
             />

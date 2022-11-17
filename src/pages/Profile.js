@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ProfileIcon } from '../img'
-import { axiosInstance } from "./axiosInstance";
+import { axiosInstance } from "../components/axiosInstance";
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {

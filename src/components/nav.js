@@ -7,6 +7,7 @@ import Logo from '../img/note.png'
 export default function Nav() {
   const [username, setUsername] = useState()
   const [linkto, setLinkto] = useState()
+  const [linkact, setLinkact] = useState()
   const navigate = useNavigate()
   const URL = "http://localhost:5000/user"
   const axiosInstance = axios.create({
@@ -19,9 +20,11 @@ export default function Nav() {
         const res = await axiosInstance.get(URL+'/profile')
         setUsername(res.data.username)
         setLinkto('/profile')
+        setLinkact('/activities')
       } catch(err) {
         setUsername('LOGIN')
         setLinkto('/login')
+        setLinkact('/login')
       }
     })()
   }, [axiosInstance, URL])
@@ -32,7 +35,7 @@ export default function Nav() {
 
   const Links = [
     {name:"Home", link:"/"},
-    {name:"Activities", link:"/activities"},
+    {name:"Activities", link:linkact},
     {name:"Calendar", link:"/*"},
   ]
   const [open,setOpen] = useState(false)
@@ -40,12 +43,12 @@ export default function Nav() {
   return (
     <div className='shadow-md w-full fixed top-0 left-0'>
       <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
-        <div className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
+        <Link to={'/'} className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
           <span className='text-3xl text-indigo-600 mr-1'>
             <img className="w-8 " src={Logo} alt="Logo"/>
           </span>
           Listify
-        </div>
+        </Link>
         
         <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>
           <ion-icon name={open ? 'close':'menu'}></ion-icon>

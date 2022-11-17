@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Logo from '../img/note.png'
 
 export default function Nav() {
-  let linkto = '/'
-  let username = 'LOGIN'
-  const [status, setStatus] = useState()
+  const [username, setUsername] = useState()
+  const [linkto, setLinkto] = useState()
   const navigate = useNavigate()
   const URL = "http://localhost:5000/user/"
   const axiosInstance = axios.create({
@@ -17,29 +16,23 @@ export default function Nav() {
     (async () => {
       try {
         const res = await axiosInstance.get(URL+'profile')
-        setStatus(res.data)
+        setUsername(res.data.username)
+        setLinkto('/profile')
       } catch(err) {
-        console.log(err)
+        setUsername('LOGIN')
+        setLinkto('/')
       }
     })()
   }, [axiosInstance, URL])
-
-  if (status !== undefined && status !== null){
-    username = status.username
-    linkto = '/profile'
-  } else {
-    username = 'LOGIN'
-    linkto = '/'
-  }
 
   const handleClick = () => {
     navigate(linkto)
   }
 
   const Links = [
-    {name:"HOME",link:"/"},
-    {name:"CALENDAR",link:"/"},
-    {name:"ABOUT",link:"/"},
+    {name:"Home", link:"/"},
+    {name:"Activities", link:"/activities"},
+    {name:"Calendar", link:"/*"},
   ]
   const [open,setOpen] = useState(false)
 
@@ -61,7 +54,7 @@ export default function Nav() {
           {
             Links.map((link)=>(
             <li key={link.name} className='md:ml-8 text-xl md:my-0 my-7'>
-              <a href={link.link} className='text-gray-800 hover:text-gray-400 duration-500'>{link.name}</a>
+              <Link to={link.link} className='text-gray-800 hover:text-gray-400 duration-500'>{link.name}</Link>
             </li>
             ))
           }

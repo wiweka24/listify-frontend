@@ -1,11 +1,11 @@
-import axios from "axios";
+import { axiosInstance } from "./axiosInstance";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function LoginForm(){
-  const axiosInstance = axios.create({
-    withCredentials: true
-  })
+  // const axiosInstance = axios.create({
+  //   withCredentials: true
+  // })
   const URL = "http://localhost:5000/user/login"
   
   const navigate = useNavigate()
@@ -33,7 +33,7 @@ export default function LoginForm(){
         })
       console.log(res.data)
 
-      navigate("/activity")
+      navigate("/activities")
   
     } catch (err) {
       console.error(err);

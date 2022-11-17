@@ -1,47 +1,45 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { axiosInstance } from "./axiosInstance";
 
 export default function ActivityForm(){
-//   const axiosInstance = axios.create({
-//     withCredentials: true
-//   })
-//   const URL = "http://localhost:5000/activity"
-  
-//   const navigate = useNavigate();
-//   const [values, setValues] = useState({
-//     ActivityName: "",
-//     Description: "",
-//     Category: "",
-//     Label:"",
-//     ExecutionDate:"",
-//     Status:"",
-//   });
+  const URL = "http://localhost:5000/activity"
+  const navigate = useNavigate();
+  const [values, setValues] = useState({
+    actName: "",
+    actDate: null,
+    actCategory: "",
+    actDescription:"",
+    actStatus: "",
+  });
 
-//   const handleChange = (e) => {
-//     setValues({ ...values, [e.target.id]: e.target.value });
-//   };
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.id]: e.target.value });
+  };
   
-//   const handleSubmit = async (e) => {
-//     e.preventDefault()
-//     console.log(values.email)
-//     console.log(values.password)
-//     try{
-//       const res = await axiosInstance.post(URL,  
-//         {
-//           username: values.username,
-//           email: values.email,
-//           password: values.password
-//         })
-//       console.log(res.data)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try{
+      const res = await axiosInstance.post(URL,  
+        {
+          actName: values.actName,
+          actDate: values.actDate,
+          actCategory: values.actCategory,
+          actDescription: values.actDescription,
+        })
+      console.log(res.data)
+      navigate("/activities")
+  
+    } catch (err) {
+      console.error(err.response.data);
+      alert(err.response.data.error.toString())
+    }
+  };
 
-//       navigate("/")
-  
-//     } catch (err) {
-//       console.error(err.response.data);
-//       alert(err.response.data.error.toString())
-//     }
-//   };
+  const handleCancel = () => {
+    navigate("/activities")
+  }
 
   return(
     <div className='flex w-full justify-center'>
@@ -51,40 +49,46 @@ export default function ActivityForm(){
         </div>
         <div className='md:flex -mt-28 ml-18'>
             <div className='md:w-[100%] md:mr-[2%]'>
-                <h3 className='text-3xl font-bold'>Activity's Name</h3>
-                <input 
-              className='py-1 px-2 w-full h-12 border-2 rounded-lg border-gray-500'
-              //value={activity.actActivity}
-              //readOnly
+              <h3 className='text-3xl font-bold'>Activity's Name</h3>
+              <input 
+                className='py-1 px-2 w-full h-12 border-2 rounded-lg border-gray-500'
+                id="actName"
+                value={values.actName}
+                onChange={handleChange}
+                placeholder="Input Activity"
               />
-              </div>
+            </div>
             <div className="md:w-[100%] md:mr-[2%] ml-32 font-bold text-3xl">
                 Execution Date
-            <input
+              <input
                 className="font-normal py-1 px-1 h-12 w-full border-2 rounded-lg border-gray-500"
-                // id={values.date}
-                // onChange={handleChange('date')}
+                id='actDate'
+                value={values.actDate}
+                onChange={handleChange}                
                 placeholder="Input Execution date"
                 type="date"
-            />
+              />
             </div>
             </div>
             <div className='md:flex mt-20 ml-18'>
-            <div className='md:w-[100%] md:mr-[2%] ml-18'>
+              <div className='md:w-[100%] md:mr-[2%] ml-18'>
                 <h3 className='text-3xl font-bold'>Description</h3>
                 <input 
-              className='py-1 px-2 w-full h-40 border-2 rounded-lg border-gray-500'
-              //value={activity.actDescription}
-              //readOnly
-              />
+                  className='py-1 px-2 w-full h-40 border-2 rounded-lg border-gray-500'
+                  id='actDescription'
+                  value={values.actDescription}
+                  onChange={handleChange}
+                  placeholder="Input Description"
+                />
               </div>
         <div
             className="md:w-[100%] md:mr-[2%] ml-32 font-bold text-3xl">
                 Category
             <input
                 className="font-normal py-1 px-1 w-full border-2 rounded-lg border-gray-500"
-                // id={values.actcategory}
-                // onChange={handleChange('category')}
+                id='actCategory'
+                value={values.actCategory}
+                onChange={handleChange}
                 placeholder="Input Category"
             />
         </div>

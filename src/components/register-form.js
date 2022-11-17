@@ -29,7 +29,7 @@ export default function RegisterForm(){
         })
       console.log(res.data)
 
-      navigate("/")
+      navigate("/login")
   
     } catch (err) {
       console.error(err.response.data);
@@ -44,7 +44,7 @@ export default function RegisterForm(){
         <div className='mt-4 flex justify-center item-center'>
           <p className='text-base font-medium'>Already have an account? &nbsp;</p>
           <Link 
-            to="/"
+            to="/login"
             className='text-base font-medium text-blue-500'
             >Log In
           </Link>

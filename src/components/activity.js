@@ -31,7 +31,6 @@ export default function Activity({searchData}) {
               className="w-full hover:bg-blue-500 group hover:ring-blue-500 hover:shadow-md md:p-0 bg-white ring-1 ring-slate-200 shadow-sm" 
               onClick={() => setShowModal(true) }>
               <article className="w-auto flex space-x-6 my-7 mx-8">
-                {/* di sini akan ada status */}
                 <div className="w-[0.5%] py-10 px-1 rounded-full bg-red-500"></div>
                 <div className="w-[99.5%]">
                   <div className='flex items-center'>
@@ -62,23 +61,24 @@ export default function Activity({searchData}) {
                     </div>
                     <div className='relative'>
                         <button>
-                            <div className="ml-2 w-8 h-8">
+                            <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                                 <EditIcon/>
                             </div>
                         </button>
                         <button>
-                            <div className="ml-2 w-8 h-8">
+                            <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                                 <DeleteIcon/>
                             </div>
                         </button> 
                     </div>
                 </div>
-                <p className='text-lg text-black text-left'>
+                <p className='text-lg text-black text-left mt-3'>
                     {act.actDescription}
+                    ini ngetes dulu
                 </p>
               </div>
 
-              <div className="flex bg-white w-full py-4 border-none"> 
+              <div className="flex bg-white w-full pb-4 pt-2 border-none"> 
                 <div className="flex">
                     <div className="text-blue-500 ml-2 w-12 h-12">
                         <ExecutionIcon/>

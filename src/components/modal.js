@@ -13,10 +13,10 @@ export default function Modal({isVisible, onClose, children}) {
           onClick={handleClose}>
             <div className='w-3/5 h-full flex flex-col'>
                 <button className="text-white text-xl place-self-end" onClick={() => onClose()}>X</button>
-                <div className='bg-white p-6 rounded-3xl'>
+                <div className='overflow-auto bg-white p-6 rounded-3xl'>
                     {children}
                 </div>
             </div>
-        </div>
-    )
+        </div> 
+    )
 }

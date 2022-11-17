@@ -15,10 +15,10 @@ export default function App() {
     <Router>
       <Nav/>
       <Routes>
-        <Route path='/' element={<Login/>} />
-        <Route path='/register' element={<Register/>} />
+        <Route path='/' element={<Activities/>} />
+        {/* <Route path='/register' element={<Register/>} />
         <Route path='/activity' element={<Activities/>} />
-        <Route path='/profile' element={<Profile/>} />
+        <Route path='/profile' element={<Profile/>} /> */}
       </Routes>
     </Router>
   )

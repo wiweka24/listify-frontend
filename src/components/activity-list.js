@@ -3,8 +3,8 @@ import React from "react";
 export default function ActivityList(){
     return(
         <div className="flex-auto justify-between mx-auto">
-            <div className='flex justify-between bg-white w-full py-4 border-2 border-gray-100'>
-                <h1 className='justify-center py-4 px-5 item-center text-4xl font-bold'>Activity List</h1>
+            <div className='flex justify-between bg-white w-full py-3 border-2 border-gray-100'>
+                <h1 className='justify-center py-4 px-5 item-center text-3xl font-bold'>Activity List</h1>
                 
                 <div className="flex relative items-center gap 2">                    
                     <input className="flex focus:ring-2 focus:bg-blue-700 focus:text-white focus:outline-none rounded-full bg-blue-500 appearance-none w-auto text-sm leading-6 h-10 placeholder-white pl-5 rounded-full ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Search projects" placeholder="Search..."></input>

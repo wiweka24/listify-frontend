@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import { axiosInstance } from "./axiosInstance";
 import Logo from '../img/note.png'
 
 export default function Nav() {
@@ -8,9 +8,6 @@ export default function Nav() {
   const [linkto, setLinkto] = useState()
   const navigate = useNavigate()
   const URL = "http://localhost:5000/user/"
-  const axiosInstance = axios.create({
-    withCredentials: true
-  })
   
   useEffect(() => {  
     (async () => {

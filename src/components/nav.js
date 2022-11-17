@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { axiosInstance } from "./axiosInstance";
+import axios from 'axios';
 import Logo from '../img/note.png'
+// import { axiosInstance } from './axiosInstance';
 
 export default function Nav() {
   const [username, setUsername] = useState()
   const [linkto, setLinkto] = useState()
   const navigate = useNavigate()
-  const URL = "http://localhost:5000/user/"
+  const URL = "http://localhost:5000/user"
+  const axiosInstance = axios.create({
+    withCredentials: true
+  })
   
   useEffect(() => {  
     (async () => {
       try {
-        const res = await axiosInstance.get(URL+'profile')
+        const res = await axiosInstance.get(URL+'/profile')
         setUsername(res.data.username)
         setLinkto('/profile')
       } catch(err) {

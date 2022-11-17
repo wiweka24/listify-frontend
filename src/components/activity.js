@@ -74,7 +74,6 @@ export default function Activity({searchData}) {
                 </div>
                 <p className='text-lg text-black text-left mt-3'>
                     {act.actDescription}
-                    ini ngetes dulu
                 </p>
               </div>
 

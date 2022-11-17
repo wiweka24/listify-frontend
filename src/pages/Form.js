@@ -1,15 +1,13 @@
-import ActivityForm from '../components/activity-form-sementara'
+import ActivityFormSem from '../components/activity-form-sementara'
+import ActivityForm from '../components/activity-form'
 
 export default function Form() {
   return (
-<<<<<<< HEAD
-      <ActivityForm/>
-=======
     <div className='w-full h-full'>
       <div className='w-fit flex item-center items-center justify-center'>
+        {/* <ActivityFormSem/> */}
         <ActivityForm/>
       </div>
     </div>  
->>>>>>> 92bdca2e5133ca46e5ae3d89726777365c27dc1b
   )
 }

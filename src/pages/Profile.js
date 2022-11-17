@@ -24,7 +24,7 @@ export default function Profile() {
     try{
       const res = await axiosInstance.post(URL+'logout')
       console.log(res.data)
-      navigate("/")
+      navigate("/login")
     } catch (err) {
       console.error(err);
     }

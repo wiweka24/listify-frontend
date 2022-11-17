@@ -17,7 +17,7 @@ export default function Nav() {
         setLinkto('/profile')
       } catch(err) {
         setUsername('LOGIN')
-        setLinkto('/')
+        setLinkto('/login')
       }
     })()
   }, [axiosInstance, URL])

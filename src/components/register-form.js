@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function RegisterForm(){
-  const URL = "http://localhost:5000/user/signup"
+  const URL = "https://backend-kelompok4.vercel.app/user/signup"
   
   const navigate = useNavigate();
   const [values, setValues] = useState({

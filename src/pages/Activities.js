@@ -28,14 +28,14 @@ export default function Activities() {
               aria-label="Search projects" 
               placeholder="Search..."
               onChange={handleChange}
-            >  
+              >  
             </input>
           </div>
 
           <Link  
             className="flex items-center py-2 px-4 rounded active:scale-[0.98]"
             to='/form'
-          >
+            >
             <AddBtnIcon/>
           </Link>    
 

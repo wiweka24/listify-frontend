@@ -6,7 +6,7 @@ import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 export default function Activity({searchData}) {
   const [activity, setActivity] = useState([])
   const [showModal, setShowModal] = useState(false)
-  const URL = "http://localhost:5000/activity"
+  const URL = "https://backend-kelompok4.vercel.app/activity"
 
   useEffect(() => {  
     (async () => {

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance } from "./axiosInstance";
+import { axiosInstance, URI } from "./axiosInstance";
 
 export default function ActivityForm(){
-  const URL = "http://localhost:5000/activity"
+  const URL = URI + "/activity"
   const navigate = useNavigate();
   const [values, setValues] = useState({
     actName: "",

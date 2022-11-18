@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance } from "../components/axiosInstance";
+import { axiosInstance ,URI } from "../components/axiosInstance";
 
 export default function Form(){
-  const URL = "https://backend-kelompok4.vercel.app/activity"
+  const URL = URI + "/activity"
   const navigate = useNavigate();
   const [values, setValues] = useState({
     actName: "",

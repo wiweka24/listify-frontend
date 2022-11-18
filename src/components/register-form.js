@@ -1,9 +1,9 @@
-import { axiosInstance } from "./axiosInstance";
+import { axiosInstance, URI } from "./axiosInstance";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function RegisterForm(){
-  const URL = "https://backend-kelompok4.vercel.app/user/signup"
+  const URL = URI + "/user/signup"
   
   const navigate = useNavigate();
   const [values, setValues] = useState({

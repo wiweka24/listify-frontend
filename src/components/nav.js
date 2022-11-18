@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Logo from '../img/note.png'
-// import { axiosInstance } from './axiosInstance';
+import { URI } from './axiosInstance';
 
 export default function Nav() {
   const [username, setUsername] = useState()
   const [linkto, setLinkto] = useState()
   const [linkact, setLinkact] = useState()
   const navigate = useNavigate()
-  const URL = "https://backend-kelompok4.vercel.app/user"
+  const URL = URI + "/user"
   const axiosInstance = axios.create({
     withCredentials: true
   })

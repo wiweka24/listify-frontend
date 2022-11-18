@@ -9,7 +9,7 @@ export default function Nav() {
   const [linkto, setLinkto] = useState()
   const [linkact, setLinkact] = useState()
   const navigate = useNavigate()
-  const URL = "http://localhost:5000/user"
+  const URL = "https://backend-kelompok4.vercel.app/user"
   const axiosInstance = axios.create({
     withCredentials: true
   })

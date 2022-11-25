@@ -1,12 +1,12 @@
 import { Fragment, useState, useEffect} from 'react'
-import { axiosInstance } from "./axiosInstance";
+import { axiosInstance, URI, notLogin } from "./axiosInstance";
 import Modal from "../components/modal"
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 
 export default function Activity({searchData}) {
   const [activity, setActivity] = useState([])
   const [showModal, setShowModal] = useState(false)
-  const URL = "https://backend-kelompok4.vercel.app/activity"
+  const URL = URI + "/activity"
 
   useEffect(() => {  
     (async () => {
@@ -15,7 +15,7 @@ export default function Activity({searchData}) {
         + searchData)
       setActivity(res.data.data.activity)
     } catch(err) {
-      console.log(err)
+      notLogin()
     }
     })()
   }, [searchData])

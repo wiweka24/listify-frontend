@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
 import { ProfileIcon } from '../img'
-import { axiosInstance } from "../components/axiosInstance";
+import { axiosInstance, URI } from "../components/axiosInstance";
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
   const navigate = useNavigate()
   const[user, setUser] = useState([])
-  const URL = "https://backend-kelompok4.vercel.app/user/"
+  const URL = URI + "/user/"
   
   useEffect(() => {  
     (async () => {
       try {
-        const res = await axiosInstance.get(URL+'profile')
+        const res = await axiosInstance.get(URL + 'profile')
         setUser(res.data)
       } catch(err) {
         console.log(err)

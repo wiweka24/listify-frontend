@@ -1,12 +1,9 @@
-import { axiosInstance } from "./axiosInstance";
+import { axiosInstance, URI } from "./axiosInstance";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function LoginForm(){
-  // const axiosInstance = axios.create({
-  //   withCredentials: true
-  // })
-  const URL = "https://backend-kelompok4.vercel.app/user/login"
+  const URL = URI + "/user/login"
   
   const navigate = useNavigate()
   const [values, setValues] = useState({

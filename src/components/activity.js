@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect} from 'react'
-import { axiosInstance, URI } from "./axiosInstance";
+import { axiosInstance, URI, notLogin } from "./axiosInstance";
 import Modal from "../components/modal"
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 
@@ -15,7 +15,7 @@ export default function Activity({searchData}) {
         + searchData)
       setActivity(res.data.data.activity)
     } catch(err) {
-      console.log(err)
+      notLogin()
     }
     })()
   }, [searchData])

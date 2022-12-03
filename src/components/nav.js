@@ -21,9 +21,7 @@ export default function Nav() {
         setUsername(res.data.username)
         setLinkto('/profile')
         setLinkact('/activities')
-        console.log(res.data)
       } catch(err) {
-        console.log(err)
         setUsername('LOGIN')
         setLinkto('/login')
         setLinkact('/login')

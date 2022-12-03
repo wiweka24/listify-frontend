@@ -79,7 +79,7 @@ export default function Form(){
           <div className='w-full md:w-[46%] md:mr-[8%] py-2'>
             <h3 className='text-xl font-medium pb-1'>Description</h3>
             <input 
-              className='w-full py-1 px-2 h-40 border-2 rounded-lg border-gray-200'
+              className='w-full py-1 px-2 placeholder:text-start h-40 border-2 rounded-lg border-gray-200'
               id='actDescription'
               value={values.actDescription}
               onChange={handleChange}

@@ -1,12 +1,23 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { axiosInstance ,URI, toastifyConfig } from "../components/component-config";
 import { ToastContainer, toast } from 'react-toastify';
 
 export default function FormEdit(){
-  const URL = URI + "/activity"
+  
   const navigate = useNavigate();
-  const [values, setValues] = useState([]);
+  const location = useLocation();
+  const {actToShow} =location.state;
+
+  const [values, setValues] = useState({
+    actId: actToShow.act._id,
+    actName: actToShow.act.actName,
+    actDate: actToShow.act.actDate,//.toISOString().subString(0.10),
+    actCategory: actToShow.act.actCategory,
+    actDescription: actToShow.act.actDescription,
+  });
+  
+  const URL = URI + "/activity/" + values.actId
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
@@ -15,7 +26,7 @@ export default function FormEdit(){
   const handleSubmit = async (e) => {
     e.preventDefault()
     try{
-      const res = await axiosInstance.post(URL,  
+      const res = await axiosInstance.patch(URL,  
         {
           actName: values.actName,
           actDate: values.actDate,
@@ -52,7 +63,7 @@ export default function FormEdit(){
               id="actName"
               value={values.actName}
               onChange={handleChange}
-              placeholder={values.actName}
+            //   placeholder={from}
               type='text'
               />
           </div>
@@ -63,7 +74,7 @@ export default function FormEdit(){
               id='actDate'
               value={values.actDate}
               onChange={handleChange}                
-              placeholder={values.actDate}
+            //   placeholder={values.actDate}
               type="date"
               />
           </div>
@@ -73,11 +84,11 @@ export default function FormEdit(){
           <div className='w-full md:w-[46%] md:mr-[8%] py-2'>
             <h3 className='text-xl font-medium pb-1'>Description</h3>
             <input 
-              className='w-full py-1 px-2 h-40 border-2 rounded-lg border-gray-200'
+              className='w-full py-1 px-2 h-40 text-start border-2 rounded-lg border-gray-200'
               id='actDescription'
               value={values.actDescription}
               onChange={handleChange}
-              placeholder={values.actDescription}
+            //   placeholder={values.actDescription}
               type='text'
               />
           </div>
@@ -88,7 +99,7 @@ export default function FormEdit(){
               id='actCategory'
               value={values.actCategory}
               onChange={handleChange}
-              placeholder={values.actCategory}
+            //   placeholder={values.actCategory}
               type='text'
             />
           </div>

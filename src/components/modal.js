@@ -2,6 +2,7 @@ import { Fragment, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 import FormEdit from '../pages/EditAct';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { URI, axiosInstance } from './component-config';
 import Confirm from './confirmation';
@@ -14,6 +15,18 @@ export default function Modal({isVisible, onClose, actToShow}) {
   if( !isVisible ) return null;
 
 //   const navigate = useNavigate();
+const Delete = async (e) => {
+  e.preventDefault()
+  try{
+    const res = await axiosInstance.Delete(URL)
+    console.log(res.data)
+    navigate("/activities")
+
+  } catch (err) {
+    console.error(err.response.data);
+    toast.error(err.response.data.error, toastifyConfig)
+  }
+};
 
   const handleClose = (e) => {
     if( e.target.id === 'wrapper') onClose();

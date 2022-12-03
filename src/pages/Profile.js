@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { ProfileIcon } from '../img'
-import { axiosInstance, URI } from "../components/axiosInstance";
+import { axiosInstance, URI } from "../components/component-config"
 import { useNavigate } from 'react-router-dom'
+import Confirm from '../components/confirmation'
 
 export default function Profile() {
   const navigate = useNavigate()
-  const[user, setUser] = useState([])
+  const [user, setUser] = useState([])
+  const [showConfirm, setShowConfirm] = useState(false)
   const URL = URI + "/user/"
   
   useEffect(() => {  
@@ -19,7 +21,6 @@ export default function Profile() {
     })()
   }, [])
 
-
   const handleClick = async (e) => {
     try{
       const res = await axiosInstance.post(URL+'logout')
@@ -31,6 +32,7 @@ export default function Profile() {
   };
 
   return (
+    <Fragment>
     <div className='flex w-full justify-center'>
       <div className='w-full md:w-5/6 lg:w-1/2 px-10 py-10'>
         <h1 className='flex text-4xl font-bold justify-center'>Profile</h1>
@@ -70,16 +72,25 @@ export default function Profile() {
           />
         </div>
         <div className='mt-16 flex justify-center'>
-          <button className='w-3/5 md:w-2/5 bg-blue-500 text-white py-2 px-6 rounded-xl hover:bg-indigo-400 duration-500'>Edit Profile</button>
+          <button className='w-3/5 md:w-2/5 bg-blue-500 text-white py-2 px-6 rounded-xl hover:bg-blue-400 duration-500'>Edit Profile</button>
         </div>
         <div className='mt-5 flex justify-center'>
           <button 
-            className='w-3/5 md:w-2/5 bg-red-500 text-white py-2 px-6 rounded-xl hover:bg-indigo-400 duration-500'
-            onClick={handleClick}
+            className='w-3/5 md:w-2/5 bg-red-500 text-white py-2 px-6 rounded-xl hover:bg-red-400 duration-500'
+            onClick={() => setShowConfirm(true) }
             >Logout
           </button>
         </div>
       </div>
     </div>
+
+    <Confirm 
+      isVisible={showConfirm} 
+      onClose={() => setShowConfirm(false)}
+      text = "Logout"
+      loc = {handleClick}>
+    </Confirm>
+
+    </Fragment>
   )
 }

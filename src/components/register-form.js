@@ -1,6 +1,7 @@
-import { axiosInstance, URI } from "./axiosInstance";
+import { axiosInstance, toastifyConfig, URI } from "./component-config";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function RegisterForm(){
   const URL = URI + "/user/signup"
@@ -27,18 +28,19 @@ export default function RegisterForm(){
           email: values.email,
           password: values.password
         })
+        
       console.log(res.data)
-
       navigate("/login")
   
     } catch (err) {
       console.error(err.response.data);
-      alert(err.response.data.error.toString())
+      toast.error(err.response.data.error, toastifyConfig)
     }
   };
 
   return(
     <div className='bg-white px-10 py-10 rounded-3xl border-2 border-gray-100'>
+      <ToastContainer/>
       <form onSubmit={handleSubmit}>
         <h1 className='flex justify-center item-center text-3xl font-semibold'>Register</h1>
         <div className='mt-4 flex justify-center item-center'>

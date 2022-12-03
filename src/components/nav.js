@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Logo from '../img/note.png'
-import { URI } from './axiosInstance';
+import { URI } from './component-config';
 
 export default function Nav() {
   const [username, setUsername] = useState()

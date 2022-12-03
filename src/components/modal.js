@@ -1,49 +1,50 @@
 import { Fragment, useState, useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
-import FormEdit from '../pages/EditAct';
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { URI, axiosInstance } from './component-config';
+import { URI, axiosInstance, dict } from './component-config';
 import Confirm from './confirmation';
 
 export default function Modal({isVisible, onClose, actToShow}) {
   const [showConfirm, setShowConfirm] = useState(false)
-  const navigate = useNavigate();
-  const URL = URI + "/activity/"  + actToShow.act._id
+  const [colorStatus, setColorStatus] = useState([])
+  const URL = URI + "/activity/" + actToShow.act._id
 
-  if( !isVisible ) return null;
-
-//   const navigate = useNavigate();
-const Delete = async (e) => {
-  e.preventDefault()
-  try{
-    const res = await axiosInstance.Delete(URL)
-    console.log(res.data)
-    navigate("/activities")
-
-  } catch (err) {
-    console.error(err.response.data);
-    toast.error(err.response.data.error, toastifyConfig)
-  }
-};
+  useEffect(() => {  
+    setColorStatus(dict[actToShow.act.actStatus])
+  }, [actToShow])
 
   const handleClose = (e) => {
     if( e.target.id === 'wrapper') onClose();
   }
-
-  const handleDelete = async (e) => {
-    e.preventDefault()
-    try{
-      const res = await axiosInstance.delete(URL)
-      console.log(res.data)
-      onClose()
   
-    } catch (err) {
-      console.error(err.response.data);
-      alert(err.response.data.error.toString())
+  const handleClick = async (status) => {
+    try{
+      const res = await axiosInstance.patch(URL,  
+        {
+          actStatus: status,
+        })
+        setColorStatus(dict[status])
+        
+      } catch (err) {
+        console.error(err.response.data);
+        alert(err.response.data.error)
+      }
     }
-  };
+
+    
+    const handleDelete = async () => {
+      try{
+        const res = await axiosInstance.delete(URL)
+        console.log(res.data)
+        onClose()
+        
+      } catch (err) {
+        console.error(err.response.data);
+        alert(err.response.data.error.toString())
+      }
+    };
+    
+    if( !isVisible ) return null
 
   return (
     <Fragment>
@@ -57,16 +58,11 @@ const Delete = async (e) => {
         <div className='overflow-auto bg-white p-6 rounded-3xl'>
 
           <div className="py-6 px-3 text-star mx-auto items-center justify-center">
-            <div className="flex justify-between font-bold text-2xl text-white w-[98%] py-8 px-6 rounded-xl bg-blue-500">
+            <div className={"flex justify-between font-bold text-2xl text-white w-[98%] py-8 px-6 rounded-xl " + colorStatus}>
               <div>
                 {actToShow.act.actName}
               </div>
               <div className='relative flex'>
-                {/* <button onClick={handleClick}>
-                    <div className="ml-2 w-8 h-8 active:scale-[0.98]">
-                        <EditIcon/>
-                    </div>
-                </button> */}
                 <Link to='/form-edit' state={{ actToShow }}>
                     <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                         <EditIcon/>
@@ -117,13 +113,19 @@ const Delete = async (e) => {
             <div>
               <p className="flex px-6 text-xl font-medium">Activity's Status</p>
               <div className="mt-2 flex px-5">
-                <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-red-500 text-base text-black hover:bg-red-400 duration-500 font-semibold'>
+                <button 
+                  onClick={() => handleClick('todo')} 
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-red-500 text-base text-black hover:bg-red-400 duration-500 font-semibold'>
                   To Do
                 </button>
-                <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-yellow-500 text-base text-black hover:bg-yellow-400 duration-500 font-semibold'>
+                <button
+                  onClick={() => handleClick('ongoing')} 
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-yellow-500 text-base text-black hover:bg-yellow-400 duration-500 font-semibold'>
                   On Going
                 </button>
-                <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-green-500 text-base text-black hover:bg-green-400 duration-500 font-semibold'>
+                <button 
+                  onClick={() => handleClick('done')} 
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-green-500 text-base text-black hover:bg-green-400 duration-500 font-semibold'>
                   Done
                 </button>           
               </div>
@@ -137,7 +139,6 @@ const Delete = async (e) => {
     <Confirm 
       isVisible={showConfirm} 
       onClose={() => setShowConfirm(false)}
-      actToShow={actToShow}
       text = "Delete Activity"
       loc = {handleDelete}>      
     </Confirm>

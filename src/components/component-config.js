@@ -23,4 +23,10 @@ export const toastifyConfig = {
   theme: "light",
 }
 
+export const dict = {
+  todo: "bg-red-500",
+  ongoing: "bg-yellow-500",
+  done: "bg-green-500"
+}
+
 // https://backend-kelompok4.vercel.app

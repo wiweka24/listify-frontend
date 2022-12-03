@@ -1,8 +1,16 @@
+import { Fragment, useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 import FormEdit from '../pages/EditAct';
 import { useNavigate, Link } from 'react-router-dom';
+import { URI, axiosInstance } from './component-config';
+import Confirm from './confirmation';
 
 export default function Modal({isVisible, onClose, actToShow}) {
+  const [showConfirm, setShowConfirm] = useState(false)
+  const navigate = useNavigate();
+  const URL = URI + "/activity/"  + actToShow.act._id
+
   if( !isVisible ) return null;
 
 //   const navigate = useNavigate();
@@ -11,11 +19,21 @@ export default function Modal({isVisible, onClose, actToShow}) {
     if( e.target.id === 'wrapper') onClose();
   }
 
-//   const handleClick = () => {
-//     navigate('/form-edit', actToShow)
-//   }
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    try{
+      const res = await axiosInstance.delete(URL)
+      console.log(res.data)
+      onClose()
+  
+    } catch (err) {
+      console.error(err.response.data);
+      alert(err.response.data.error.toString())
+    }
+  };
 
   return (
+    <Fragment>
     <div 
       className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'
       id='wrapper' 
@@ -42,7 +60,8 @@ export default function Modal({isVisible, onClose, actToShow}) {
                     </div>
                 </Link>
                 <button>
-                  <div className="ml-2 w-8 h-8 active:scale-[0.98]">
+                  <div className="ml-2 w-8 h-8 active:scale-[0.98]"
+                       onClick={() => setShowConfirm(true) }>
                     <DeleteIcon/>
                   </div>
                 </button> 
@@ -101,5 +120,15 @@ export default function Modal({isVisible, onClose, actToShow}) {
         </div>
       </div>
     </div>
+
+    <Confirm 
+      isVisible={showConfirm} 
+      onClose={() => setShowConfirm(false)}
+      actToShow={actToShow}
+      text = "Delete Activity"
+      loc = {handleDelete}>      
+    </Confirm>
+
+    </Fragment>
   )
 }

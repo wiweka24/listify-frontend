@@ -11,6 +11,7 @@ import Profile from './pages/Profile'
 import Form from './pages/Form'
 import NotFound from './pages/Notfound'
 import Homepage from './pages/Homepage'
+import FormEdit from './pages/EditAct'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path='/profile' element={<Profile/>} />
         <Route path='/form' element={<Form/>} />
         <Route path='/*' element={<NotFound/>} />
+        <Route path='/form-edit' element={<FormEdit/>} />
       </Routes>
     </Router>
   )

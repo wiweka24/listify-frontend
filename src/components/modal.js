@@ -1,14 +1,20 @@
+import { Fragment, useState, useEffect} from 'react'
+import { useNavigate, Link } from 'react-router-dom';
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
-import { axiosInstance, URI, dict } from './component-config'
-import { useState,useEffect } from 'react'
+import { URI, axiosInstance, dict } from './component-config';
+import FormEdit from '../pages/EditAct';
+import Confirm from './confirmation';
 
 export default function Modal({isVisible, onClose, actToShow}) {
+  const [showConfirm, setShowConfirm] = useState(false)
   const [colorStatus, setColorStatus] = useState([])
   const URL = URI + "/activity/" + actToShow.act._id
 
   useEffect(() => {  
     setColorStatus(dict[actToShow.act.actStatus])
   }, [actToShow])
+
+//   const navigate = useNavigate();
 
   const handleClose = (e) => {
     if( e.target.id === 'wrapper') onClose();
@@ -28,9 +34,24 @@ export default function Modal({isVisible, onClose, actToShow}) {
       }
     }
 
-  if( !isVisible ) return null;
     
+    const handleDelete = async (e) => {
+      e.preventDefault()
+      try{
+        const res = await axiosInstance.delete(URL)
+        console.log(res.data)
+        onClose()
+        
+      } catch (err) {
+        console.error(err.response.data);
+        alert(err.response.data.error.toString())
+      }
+    };
+    
+    if( !isVisible ) return null
+
   return (
+    <Fragment>
     <div 
       className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'
       id='wrapper' 
@@ -45,14 +66,20 @@ export default function Modal({isVisible, onClose, actToShow}) {
               <div>
                 {actToShow.act.actName}
               </div>
-              <div className='relative'>
+              <div className='relative flex'>
+                {/* <button onClick={handleClick}>
+                    <div className="ml-2 w-8 h-8 active:scale-[0.98]">
+                        <EditIcon/>
+                    </div>
+                </button> */}
+                <Link to='/form-edit' state={{ actToShow }}>
+                    <div className="ml-2 w-8 h-8 active:scale-[0.98]">
+                        <EditIcon/>
+                    </div>
+                </Link>
                 <button>
-                  <div className="ml-2 w-8 h-8 active:scale-[0.98]">
-                    <EditIcon/>
-                  </div>
-                </button>
-                <button>
-                  <div className="ml-2 w-8 h-8 active:scale-[0.98]">
+                  <div className="ml-2 w-8 h-8 active:scale-[0.98]"
+                       onClick={() => setShowConfirm(true) }>
                     <DeleteIcon/>
                   </div>
                 </button> 
@@ -117,5 +144,15 @@ export default function Modal({isVisible, onClose, actToShow}) {
         </div>
       </div>
     </div>
+
+    <Confirm 
+      isVisible={showConfirm} 
+      onClose={() => setShowConfirm(false)}
+      actToShow={actToShow}
+      text = "Delete Activity"
+      loc = {handleDelete}>      
+    </Confirm>
+
+    </Fragment>
   )
 }

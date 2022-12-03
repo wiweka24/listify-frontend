@@ -1,11 +1,19 @@
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
+import FormEdit from '../pages/EditAct';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Modal({isVisible, onClose, actToShow}) {
   if( !isVisible ) return null;
 
+//   const navigate = useNavigate();
+
   const handleClose = (e) => {
     if( e.target.id === 'wrapper') onClose();
   }
+
+//   const handleClick = () => {
+//     navigate('/form-edit', actToShow)
+//   }
 
   return (
     <div 
@@ -22,12 +30,17 @@ export default function Modal({isVisible, onClose, actToShow}) {
               <div>
                 {actToShow.act.actName}
               </div>
-              <div className='relative'>
-                <button>
-                  <div className="ml-2 w-8 h-8 active:scale-[0.98]">
-                    <EditIcon/>
-                  </div>
-                </button>
+              <div className='relative flex'>
+                {/* <button onClick={handleClick}>
+                    <div className="ml-2 w-8 h-8 active:scale-[0.98]">
+                        <EditIcon/>
+                    </div>
+                </button> */}
+                <Link to='/form-edit' state={{ actToShow }}>
+                    <div className="ml-2 w-8 h-8 active:scale-[0.98]">
+                        <EditIcon/>
+                    </div>
+                </Link>
                 <button>
                   <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                     <DeleteIcon/>

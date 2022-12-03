@@ -27,8 +27,8 @@ export default function RegisterForm(){
           email: values.email,
           password: values.password
         })
+        
       console.log(res.data)
-
       navigate("/login")
   
     } catch (err) {

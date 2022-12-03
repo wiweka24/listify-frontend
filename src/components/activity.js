@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect} from 'react'
-import { axiosInstance, URI, notLogin } from "./axiosInstance";
+import { axiosInstance, URI, notLogin } from "./component-config";
 import Modal from "../components/modal"
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 

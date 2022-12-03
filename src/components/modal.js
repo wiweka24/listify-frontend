@@ -1,12 +1,35 @@
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
+import { axiosInstance, URI, dict } from './component-config'
+import { useState,useEffect } from 'react'
 
 export default function Modal({isVisible, onClose, actToShow}) {
-  if( !isVisible ) return null;
+  const [colorStatus, setColorStatus] = useState([])
+  const URL = URI + "/activity/" + actToShow.act._id
+
+  useEffect(() => {  
+    setColorStatus(dict[actToShow.act.actStatus])
+  }, [actToShow])
 
   const handleClose = (e) => {
     if( e.target.id === 'wrapper') onClose();
   }
+  
+  const handleClick = async (status) => {
+    try{
+      const res = await axiosInstance.patch(URL,  
+        {
+          actStatus: status,
+        })
+        setColorStatus(dict[status])
+        
+      } catch (err) {
+        console.error(err.response.data);
+        alert(err.response.data.error)
+      }
+    }
 
+  if( !isVisible ) return null;
+    
   return (
     <div 
       className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'
@@ -18,7 +41,7 @@ export default function Modal({isVisible, onClose, actToShow}) {
         <div className='overflow-auto bg-white p-6 rounded-3xl'>
 
           <div className="py-6 px-3 text-star mx-auto items-center justify-center">
-            <div className="flex justify-between font-bold text-2xl text-white w-[98%] py-8 px-6 rounded-xl bg-blue-500">
+            <div className={"flex justify-between font-bold text-2xl text-white w-[98%] py-8 px-6 rounded-xl " + colorStatus}>
               <div>
                 {actToShow.act.actName}
               </div>
@@ -72,13 +95,19 @@ export default function Modal({isVisible, onClose, actToShow}) {
             <div>
               <p className="flex px-6 text-xl font-medium">Activity's Status</p>
               <div className="mt-2 flex px-5">
-                <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-red-500 text-base text-black hover:bg-red-400 duration-500 font-semibold'>
+                <button 
+                  onClick={() => handleClick('todo')} 
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-red-500 text-base text-black hover:bg-red-400 duration-500 font-semibold'>
                   To Do
                 </button>
-                <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-yellow-500 text-base text-black hover:bg-yellow-400 duration-500 font-semibold'>
+                <button
+                  onClick={() => handleClick('ongoing')} 
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-yellow-500 text-base text-black hover:bg-yellow-400 duration-500 font-semibold'>
                   On Going
                 </button>
-                <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-green-500 text-base text-black hover:bg-green-400 duration-500 font-semibold'>
+                <button 
+                  onClick={() => handleClick('done')} 
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-green-500 text-base text-black hover:bg-green-400 duration-500 font-semibold'>
                   Done
                 </button>           
               </div>

@@ -1,11 +1,14 @@
 import { Fragment, useState, useEffect} from 'react'
-import { axiosInstance, URI, notLogin } from "./component-config";
+import { axiosInstance, URI, notLogin, dict} from "./component-config";
 import Modal from "../components/modal"
 
 export default function Activity({searchData}) {
   const [activity, setActivity] = useState([])
   const [showModal, setShowModal] = useState(false)
-  const [actToShow, setActToShow] = useState(false)
+  const [actToShow, setActToShow] = useState({act:{
+    _id: "",
+    actStatus: ""
+  }})
   const URL = URI + "/activity"
 
   useEffect(() => {  
@@ -18,7 +21,7 @@ export default function Activity({searchData}) {
       notLogin()
     }
     })()
-  }, [searchData])
+  }, [searchData, showModal])
 
   const handleClick = (act) => {
     setActToShow(act)
@@ -37,7 +40,7 @@ export default function Activity({searchData}) {
               id={act.actName.toString()} 
               onClick={() => handleClick({act})}>
               <article className="w-auto flex space-x-6 my-7 mx-8">
-                <div className="w-[0.5%] py-10 px-1 rounded-full bg-red-500"></div>
+                <div className={"w-[0.5%] py-10 px-1 rounded-full " + dict[act.actStatus]}></div>
                 <div className="w-[99.5%]">
                   <div className='flex items-center'>
                     <h1 class="mr-3 group-hover:text-white font-semibold text-lg text-slate-900">

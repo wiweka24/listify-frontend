@@ -1,11 +1,28 @@
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 import FormEdit from '../pages/EditAct';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { Fragment } from 'react';
+import Confirm from './confirmation';
 
 export default function Modal({isVisible, onClose, actToShow}) {
+  const [showConfirm, setShowConfirm] = useState(false)
+
   if( !isVisible ) return null;
 
 //   const navigate = useNavigate();
+const Delete = async (e) => {
+  e.preventDefault()
+  try{
+    const res = await axiosInstance.Delete(URL)
+    console.log(res.data)
+    navigate("/activities")
+
+  } catch (err) {
+    console.error(err.response.data);
+    toast.error(err.response.data.error, toastifyConfig)
+  }
+};
 
   const handleClose = (e) => {
     if( e.target.id === 'wrapper') onClose();
@@ -16,6 +33,7 @@ export default function Modal({isVisible, onClose, actToShow}) {
 //   }
 
   return (
+    <Fragment>
     <div 
       className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'
       id='wrapper' 
@@ -42,8 +60,8 @@ export default function Modal({isVisible, onClose, actToShow}) {
                     </div>
                 </Link>
                 <button>
-                  <div className="ml-2 w-8 h-8 active:scale-[0.98]">
-                    <DeleteIcon/>
+                  <div className="ml-2 w-8 h-8 active:scale-[0.98]"
+                        onClick={() => setShowConfirm(true) }><DeleteIcon/>
                   </div>
                 </button> 
               </div>
@@ -101,5 +119,15 @@ export default function Modal({isVisible, onClose, actToShow}) {
         </div>
       </div>
     </div>
+
+    <Confirm 
+        isVisible={showConfirm} 
+        onClose={() => setShowConfirm(false)}
+        actToShow={actToShow}
+        text = "Delete Activity"
+        loc = {handleDelete}>
+    </Confirm>
+
+    </Fragment>
   )
 }

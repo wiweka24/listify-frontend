@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom'
 import Login from "./pages/Login"
 import Activities from './pages/Activities'
+import Calendar from './pages/Calendar'
 import Nav from './components/nav'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
@@ -22,6 +23,7 @@ export default function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />
         <Route path='/activities' element={<Activities/>} />
+        <Route path='/calendar' element={<Calendar/>} />
         <Route path='/profile' element={<Profile/>} />
         <Route path='/form' element={<Form/>} />
         <Route path='/*' element={<NotFound/>} />

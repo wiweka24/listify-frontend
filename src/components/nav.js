@@ -8,6 +8,7 @@ export default function Nav() {
   const [username, setUsername] = useState()
   const [linkto, setLinkto] = useState()
   const [linkact, setLinkact] = useState()
+  const [linkcal, setLinkcal] = useState()
   const navigate = useNavigate()
   const URL = URI + "/user"
   const axiosInstance = axios.create({
@@ -21,10 +22,12 @@ export default function Nav() {
         setUsername(res.data.username)
         setLinkto('/profile')
         setLinkact('/activities')
+        setLinkcal ('/calendar')
       } catch(err) {
         setUsername('LOGIN')
         setLinkto('/login')
         setLinkact('/login')
+        setLinkcal('/login')
       }
     })()
   }, [axiosInstance, URL])
@@ -36,7 +39,7 @@ export default function Nav() {
   const Links = [
     {name:"Home", link:"/"},
     {name:"Activities", link:linkact},
-    {name:"Calendar", link:"/*"},
+    {name:"Calendar", link:linkcal},
   ]
   const [open,setOpen] = useState(false)
 

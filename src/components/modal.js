@@ -1,15 +1,7 @@
 import { Fragment, useState, useEffect} from 'react'
-<<<<<<< HEAD
-=======
-import { useNavigate } from 'react-router-dom';
-import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
-import FormEdit from '../pages/EditAct';
-import { useState } from 'react';
->>>>>>> origin/main
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 import { URI, axiosInstance, dict } from './component-config';
-import FormEdit from '../pages/EditAct';
 import Confirm from './confirmation';
 
 export default function Modal({isVisible, onClose, actToShow}) {
@@ -20,20 +12,6 @@ export default function Modal({isVisible, onClose, actToShow}) {
   useEffect(() => {  
     setColorStatus(dict[actToShow.act.actStatus])
   }, [actToShow])
-
-//   const navigate = useNavigate();
-const Delete = async (e) => {
-  e.preventDefault()
-  try{
-    const res = await axiosInstance.Delete(URL)
-    console.log(res.data)
-    navigate("/activities")
-
-  } catch (err) {
-    console.error(err.response.data);
-    toast.error(err.response.data.error, toastifyConfig)
-  }
-};
 
   const handleClose = (e) => {
     if( e.target.id === 'wrapper') onClose();
@@ -54,8 +32,7 @@ const Delete = async (e) => {
     }
 
     
-    const handleDelete = async (e) => {
-      e.preventDefault()
+    const handleDelete = async () => {
       try{
         const res = await axiosInstance.delete(URL)
         console.log(res.data)
@@ -86,11 +63,6 @@ const Delete = async (e) => {
                 {actToShow.act.actName}
               </div>
               <div className='relative flex'>
-                {/* <button onClick={handleClick}>
-                    <div className="ml-2 w-8 h-8 active:scale-[0.98]">
-                        <EditIcon/>
-                    </div>
-                </button> */}
                 <Link to='/form-edit' state={{ actToShow }}>
                     <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                         <EditIcon/>
@@ -167,7 +139,6 @@ const Delete = async (e) => {
     <Confirm 
       isVisible={showConfirm} 
       onClose={() => setShowConfirm(false)}
-      actToShow={actToShow}
       text = "Delete Activity"
       loc = {handleDelete}>      
     </Confirm>

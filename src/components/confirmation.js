@@ -1,12 +1,15 @@
-import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 
-export default function Confirm({isVisible, onClose, actToShow, text, loc}) {
-  let params = text.params
-  let param = loc.param
+export default function Confirm({isVisible, onClose, text, loc}) {
+
   if( !isVisible ) return null;
 
   const handleClose = (e) => {
-    if( e.target.id === 'wrapper') onClose();
+    if( e.target.id === 'wrapper') onClose()
+  }
+
+  const handleClick = () => {
+    loc();
+    onClose()
   }
 
   return (
@@ -24,9 +27,9 @@ export default function Confirm({isVisible, onClose, actToShow, text, loc}) {
             </div>
             <div className="flex text-center pb-6 px-7 justify-center"> 
                 <button text="py-6" className="py-1.5 px-10 mx-3 rounded-full bg-red-500 text-base text-white hover:bg-red-300 duration-500"
-                        onClick={loc}>Yes</button>
+                    onClick={handleClick}>Yes</button>
                 <button text="py-6" className="py-1.5 px-10 mx-3 rounded-full bg-black text-base text-white hover:bg-gray-500 duration-500"
-                        onClick={() => onClose()}>Cancel</button>
+                    onClick={() => onClose()}>Cancel</button>
             </div>
         </div>
       </div>

@@ -1,11 +1,13 @@
 import { useState, useEffect, Fragment } from 'react'
 import { ProfileIcon } from '../img'
-import { axiosInstance, URI } from "../components/component-config";
+import { axiosInstance, URI } from "../components/component-config"
 import { useNavigate } from 'react-router-dom'
+import Confirm from '../components/confirmation'
 
 export default function Profile() {
   const navigate = useNavigate()
   const [user, setUser] = useState([])
+  const [showConfirm, setShowConfirm] = useState(false)
   const URL = URI + "/user/"
   
   useEffect(() => {  
@@ -75,18 +77,18 @@ export default function Profile() {
         <div className='mt-5 flex justify-center'>
           <button 
             className='w-3/5 md:w-2/5 bg-red-500 text-white py-2 px-6 rounded-xl hover:bg-red-400 duration-500'
-                      onClick={() => setShowConfirm(true) }>Logout
+            onClick={() => setShowConfirm(true) }
+            >Logout
           </button>
         </div>
       </div>
     </div>
 
     <Confirm 
-        isVisible={showConfirm} 
-        onClose={() => setShowConfirm(false)}
-        actToShow={actToShow}
-        text = "Logout"
-        loc = {handleClick}>
+      isVisible={showConfirm} 
+      onClose={() => setShowConfirm(false)}
+      text = "Logout"
+      loc = {handleClick}>
     </Confirm>
 
     </Fragment>

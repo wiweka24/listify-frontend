@@ -2,6 +2,7 @@ import { Fragment, useState, useEffect} from 'react'
 import { axiosInstance, URI, notLogin } from "./component-config";
 import Modal from "../components/modal"
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
+import { Link } from 'react-router-dom';
 
 export default function Activity({searchData}) {
   const [activity, setActivity] = useState([])
@@ -60,11 +61,11 @@ export default function Activity({searchData}) {
                         {act.actName}
                     </div>
                     <div className='relative'>
-                        <button>
-                            <div className="ml-2 w-8 h-8 active:scale-[0.98]">
-                                <EditIcon/>
-                            </div>
-                        </button>
+                        <Link to='/form-edit'>
+                          <div className="ml-2 w-8 h-8 active:scale-[0.98]">
+                            <EditIcon/>
+                          </div>
+                        </Link>
                         <button>
                             <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                                 <DeleteIcon/>

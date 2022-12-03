@@ -69,11 +69,11 @@ export default function Profile() {
           />
         </div>
         <div className='mt-16 flex justify-center'>
-          <button className='w-3/5 md:w-2/5 bg-blue-500 text-white py-2 px-6 rounded-xl hover:bg-indigo-400 duration-500'>Edit Profile</button>
+          <button className='w-3/5 md:w-2/5 bg-blue-500 text-white py-2 px-6 rounded-xl hover:bg-blue-400 duration-500'>Edit Profile</button>
         </div>
         <div className='mt-5 flex justify-center'>
           <button 
-            className='w-3/5 md:w-2/5 bg-red-500 text-white py-2 px-6 rounded-xl hover:bg-indigo-400 duration-500'
+            className='w-3/5 md:w-2/5 bg-red-500 text-white py-2 px-6 rounded-xl hover:bg-red-400 duration-500'
             onClick={handleClick}
             >Logout
           </button>

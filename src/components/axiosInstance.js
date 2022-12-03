@@ -5,7 +5,7 @@ export const axiosInstance = axios.create({
   withCredentials: true
 })
 
-export const URI = "https://backend-listify.vercel.app"
+export const URI = "http://localhost:5000"
 
 export const notLogin = () => {
   const navigate = useNavigate

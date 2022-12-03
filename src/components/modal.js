@@ -1,12 +1,16 @@
+import { Fragment, useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 import FormEdit from '../pages/EditAct';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Fragment } from 'react';
+import { URI, axiosInstance } from './component-config';
 import Confirm from './confirmation';
 
 export default function Modal({isVisible, onClose, actToShow}) {
   const [showConfirm, setShowConfirm] = useState(false)
+  const navigate = useNavigate();
+  const URL = URI + "/activity/"  + actToShow.act._id
 
   if( !isVisible ) return null;
 
@@ -28,9 +32,18 @@ const Delete = async (e) => {
     if( e.target.id === 'wrapper') onClose();
   }
 
-//   const handleClick = () => {
-//     navigate('/form-edit', actToShow)
-//   }
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    try{
+      const res = await axiosInstance.delete(URL)
+      console.log(res.data)
+      onClose()
+  
+    } catch (err) {
+      console.error(err.response.data);
+      alert(err.response.data.error.toString())
+    }
+  };
 
   return (
     <Fragment>
@@ -61,7 +74,8 @@ const Delete = async (e) => {
                 </Link>
                 <button>
                   <div className="ml-2 w-8 h-8 active:scale-[0.98]"
-                        onClick={() => setShowConfirm(true) }><DeleteIcon/>
+                       onClick={() => setShowConfirm(true) }>
+                    <DeleteIcon/>
                   </div>
                 </button> 
               </div>
@@ -121,11 +135,11 @@ const Delete = async (e) => {
     </div>
 
     <Confirm 
-        isVisible={showConfirm} 
-        onClose={() => setShowConfirm(false)}
-        actToShow={actToShow}
-        text = "Delete Activity"
-        loc = {handleDelete}>
+      isVisible={showConfirm} 
+      onClose={() => setShowConfirm(false)}
+      actToShow={actToShow}
+      text = "Delete Activity"
+      loc = {handleDelete}>      
     </Confirm>
 
     </Fragment>

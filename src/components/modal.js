@@ -1,4 +1,3 @@
-
 export default function Modal({isVisible, onClose, children}) {
     if( !isVisible ) return null;
 

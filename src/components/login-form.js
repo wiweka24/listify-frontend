@@ -1,18 +1,16 @@
-import { axiosInstance, URI } from "./axiosInstance";
+import { axiosInstance, URI, toastifyConfig } from "./component-config";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginForm(){
   const URL = URI + "/user/login"
-  
   const navigate = useNavigate()
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-
-  // "email": "wiweka24@mail.com",
-  // "password": "Wiweka12345#"
   
   const handleChange = (e) => {
     setValues({ ...values, [e.target.id]: e.target.value });
@@ -20,25 +18,24 @@ export default function LoginForm(){
   
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(values.email)
-    console.log(values.password)
     try{
       const res = await axiosInstance.post(URL,  
         {
           email: values.email,
           password: values.password
         })
-      console.log(res.data)
 
+      toast.success(res.data, toastifyConfig);
       navigate("/activities")
   
     } catch (err) {
-      console.error(err);
+      toast.error(err.response.data.error, toastifyConfig)
     }
   };
 
   return(
     <div className='bg-white px-10 py-10 rounded-3xl border-2 border-gray-100'>
+      <ToastContainer/>
       <form onSubmit={handleSubmit}>
         <h1 className='flex justify-center items-center text-3xl font-semibold'>Log In</h1>
         <div className='mt-4 flex justify-center items-center'>

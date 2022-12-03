@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { ProfileIcon } from '../img'
-import { axiosInstance, URI } from "../components/axiosInstance";
+import { axiosInstance, URI } from "../components/component-config";
 import { useNavigate } from 'react-router-dom'
 
 export default function Profile() {
   const navigate = useNavigate()
-  const[user, setUser] = useState([])
+  const [user, setUser] = useState([])
   const URL = URI + "/user/"
   
   useEffect(() => {  
@@ -18,7 +18,6 @@ export default function Profile() {
       }
     })()
   }, [])
-
 
   const handleClick = async (e) => {
     try{

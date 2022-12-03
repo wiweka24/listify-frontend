@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { axiosInstance ,URI } from "../components/axiosInstance";
+import { axiosInstance ,URI } from "../components/component-config";
 
 export default function Form(){
   const URL = URI + "/activity"

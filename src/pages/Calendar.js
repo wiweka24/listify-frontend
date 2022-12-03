@@ -3,9 +3,8 @@ import React, { useState, useEffect } from "react"
 import { generateDate, months } from "../components/calendar"
 import cn from "../components/cn"
 import { GrFormNext, GrFormPrevious } from "react-icons/gr"
-import { axiosInstance, URI } from "../components/axiosInstance"
+import { axiosInstance, URI, dict } from "../components/component-config.js"
 import Modal from "../components/modal"
-import { EditIcon, ExecutionIcon, CategoryIcon, DeleteIcon } from '../img'
 
 export default function Calendar() {
 	const days = ["S", "M", "T", "W", "T", "F", "S"]
@@ -14,10 +13,16 @@ export default function Calendar() {
 	const [selectDate, setSelectDate] = useState(currentDate)
     const [activity, setActivity] = useState([])
     const [showModal, setShowModal] = useState(false)
-
+    const [actToShow, setActToShow] = useState({act:{
+        _id: "",
+        actStatus: ""
+      }})
     const URL = URI + "/activity"
     
-    
+    const handleClick = (act) => {
+        setActToShow(act)
+        setShowModal(true)
+      }
 
     useEffect(() => {  
         (async () => {
@@ -28,7 +33,7 @@ export default function Calendar() {
             console.log(err)
         }
         })()
-    }, [])
+    }, [showModal])
 
 	return (
         <div className="flex w-full h-full md:-mt-[80px]">
@@ -119,9 +124,10 @@ export default function Calendar() {
                             <li key={act._id}>
                                 <button
                                     className="w-full hover:bg-blue-400 group hover:ring-blue-500 md:p-0 bg-white" 
-                                    onClick={() => setShowModal(true) }>
+                                    onClick={() => handleClick({act})}>
+
                                     <article className="w-auto flex space-x-6 my-1">
-                                        <div className="w-[0.5%] px-0.5 rounded-full bg-red-500"></div>
+                                        <div className={"w-[0.5%] px-0.5 rounded-full " + dict[act.actStatus]}></div>
                                         <div className="w-[99.5%]">
                                         <div className='flex items-center'>
                                             <h1 class="mr-3 group-hover:text-white font-semibold text-slate-900">
@@ -143,75 +149,12 @@ export default function Calendar() {
                                     </article>  
                                 </button>
 
-                                <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
-                                    <div className="py-6 px-3 text-star mx-auto items-center justify-center">
-                                        <div className="flex justify-between font-bold text-2xl text-white w-[98%] py-8 px-6 rounded-xl bg-blue-500">
-                                            <div>
-                                                {act.actName}
-                                            </div>
-                                            <div className='relative'>
-                                                <button>
-                                                    <div className="ml-2 w-8 h-8 active:scale-[0.98]">
-                                                        <EditIcon/>
-                                                    </div>
-                                                </button>
-                                                <button>
-                                                    <div className="ml-2 w-8 h-8 active:scale-[0.98]">
-                                                        <DeleteIcon/>
-                                                    </div>
-                                                </button> 
-                                            </div>
-                                        </div>
-                                        <p className='text-lg text-black text-left mt-3'>
-                                            {act.actDescription}
-                                        </p>
-                                    </div>
-
-                                    <div className="flex bg-white w-full pb-4 pt-2 border-none"> 
-                                        <div className="flex">
-                                            <div className="text-blue-500 ml-2 w-12 h-12">
-                                                <ExecutionIcon/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                        <p className="flex text-left px-6 text-xl font-medium">Execution Date</p>
-                                        <p className="px-6 text-sm font-normal">
-                                            {act.actDate}
-                                        </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex bg-white w-full py-4 border-none"> 
-                                        <div className="flex">
-                                            <div className="text-blue-500 ml-2 w-12 h-12">
-                                                <CategoryIcon/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                        <p className="flex text-left px-6 text-xl font-medium">Category</p>
-                                        <p className="px-6 text-sm font-normal">
-                                            {act.actCategory}
-                                        </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex bg-white w-full py-4 border-none"> 
-                                        <div>
-                                        <p className="flex px-6 text-xl font-medium">Activity's Status</p>
-                                        <div className="mt-2 flex px-5">
-                                            <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-red-500 text-base text-black hover:bg-red-400 duration-500 font-semibold'>
-                                            To Do
-                                            </button>
-                                            <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-yellow-500 text-base text-black hover:bg-yellow-400 duration-500 font-semibold'>
-                                            On Going
-                                            </button>
-                                            <button className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-green-500 text-base text-black hover:bg-green-400 duration-500 font-semibold'>
-                                            Done
-                                            </button>                   
-                                        </div>
-                                        </div>
-                                    </div>
+                                <Modal 
+                                isVisible={showModal} 
+                                onClose={() => setShowModal(false)}
+                                actToShow={actToShow}>
                                 </Modal>
+
                             </li>
                         ))
                     ) : (

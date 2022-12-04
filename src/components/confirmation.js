@@ -1,6 +1,6 @@
 
 export default function Confirm({isVisible, onClose, text, loc}) {
-
+  var lowercase = text.toLowerCase();
   if( !isVisible ) return null;
 
   const handleClose = (e) => {
@@ -23,7 +23,7 @@ export default function Confirm({isVisible, onClose, text, loc}) {
         <div className='overflow-auto bg-white p-6 rounded-3xl'>
             <div className="py-6 px-3 text-star mx-auto items-center justify-center">
                 <h1 className='text-2xl font-bold mb-5 text-black text-center' >Confirm {text}</h1>
-                <p className='text-lg text-black text-center'>Are you sure want to {text}?</p>
+                <p className='text-lg text-black text-center'>Are you sure want to {lowercase}?</p>
             </div>
             <div className="flex text-center pb-6 px-7 justify-center"> 
                 <button text="py-6" className="py-1.5 px-10 mx-3 rounded-full bg-red-500 text-base text-white hover:bg-red-300 duration-500"

@@ -24,9 +24,9 @@ export const toastifyConfig = {
 }
 
 export const dict = {
-  todo: "bg-red-500",
-  ongoing: "bg-yellow-500",
-  done: "bg-green-500"
+  '2-todo': "bg-red-500",
+  '1-ongoing': "bg-yellow-500",
+  '3-done': "bg-green-500"
 }
 
 // https://backend-kelompok4.vercel.app

@@ -115,17 +115,17 @@ export default function Modal({isVisible, onClose, actToShow}) {
               <div className="mt-2 flex px-5">
                 <button 
                   onClick={() => handleClick('todo')} 
-                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-red-500 text-base text-black hover:bg-red-400 duration-500 font-semibold'>
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-red-500 text-base text-white hover:bg-red-400 duration-500 font-semibold'>
                   To Do
                 </button>
                 <button
                   onClick={() => handleClick('ongoing')} 
-                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-yellow-500 text-base text-black hover:bg-yellow-400 duration-500 font-semibold'>
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-yellow-500 text-base text-white hover:bg-yellow-400 duration-500 font-semibold'>
                   On Going
                 </button>
                 <button 
                   onClick={() => handleClick('done')} 
-                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-green-500 text-base text-black hover:bg-green-400 duration-500 font-semibold'>
+                  className='mr-2 active:scale-[0.98] py-1.5 px-3 rounded-lg bg-green-500 text-base text-white hover:bg-green-400 duration-500 font-semibold'>
                   Done
                 </button>           
               </div>

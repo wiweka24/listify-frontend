@@ -13,6 +13,7 @@ import Form from './pages/Form'
 import NotFound from './pages/Notfound'
 import Homepage from './pages/Homepage'
 import FormEdit from './pages/EditAct'
+import ProfileEdit from './pages/EditProfile'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
         <Route path='/form' element={<Form/>} />
         <Route path='/*' element={<NotFound/>} />
         <Route path='/form-edit' element={<FormEdit/>} />
+        <Route path='/profile-edit' element={<ProfileEdit/>} />
       </Routes>
     </Router>
   )

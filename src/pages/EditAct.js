@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { axiosInstance ,URI, toastifyConfig } from "../components/component-config";
 import { ToastContainer, toast } from 'react-toastify';
+import Confirm from "../components/confirmation";
 
 export default function FormEdit(){
-  
   const navigate = useNavigate();
   const location = useLocation();
+  const [showConfirm, setShowConfirm] = useState(false)
   const {actToShow} =location.state;
 
   const [values, setValues] = useState({
@@ -24,7 +25,7 @@ export default function FormEdit(){
   };
   
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     try{
       const res = await axiosInstance.patch(URL,  
         {
@@ -47,7 +48,7 @@ export default function FormEdit(){
   }
 
   return(
-    <form onSubmit={handleSubmit}>
+    <Fragment>
     <ToastContainer/>
     <div className='flex w-full justify-center'>
       <div className='w-full md:w-5/6 lg:w-1/2 px-10 py-10'>
@@ -109,7 +110,7 @@ export default function FormEdit(){
           <button
               className="w-3/5 md:w-2/5 bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-400 duration-500"
               type='submit'
-              > Edit
+              onClick={() => setShowConfirm(true) }> Edit
           </button>
         </div>
         <div className='mt-5 flex justify-center'>
@@ -122,6 +123,14 @@ export default function FormEdit(){
 
       </div>
     </div>
-    </form>
-    )
+
+    <Confirm 
+      isVisible={showConfirm} 
+      onClose={() => setShowConfirm(false)}
+      text = "Edit Activity"
+      loc = {handleSubmit}>      
+    </Confirm>
+
+    </Fragment>
+  )
 }

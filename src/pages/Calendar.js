@@ -119,13 +119,13 @@ export default function Calendar() {
 				<h1 className="text-lg font-semibold">
 					Activities for {selectDate.toDate().toDateString()}
 				</h1>
-				<div className="md:overflow-y-auto h-96 scrollbar-hide">
+				<div className="md:overflow-y-auto h-96 w-full">
 					<ol className="mt-4 space-y-1 text- leading-6 text-gray-500">
 						{activity.length > 0 ? (
 							activity.map((act) => (
 								<li key={act._id}>
 									<button
-										className="w-full hover:bg-blue-400 group hover:ring-blue-500 md:p-0 bg-white" 
+										className="w-[93%] hover:bg-blue-400 group hover:ring-blue-500 bg-white" 
 										onClick={() => handleClick({act})}>
 
 										<article className="w-auto flex space-x-6 my-1">
@@ -139,7 +139,7 @@ export default function Calendar() {
 												{act.actCategory}
 												</label>
 											</div>  
-											<div class="w-auto text-left group-hover:text-blue-50 my-1 text-sm text-slate-700">
+											<div class="w-[93%] text-left group-hover:text-blue-50 my-1 text-sm text-slate-700">
 												<p className="truncate">
 												{act.actDescription}
 												</p>

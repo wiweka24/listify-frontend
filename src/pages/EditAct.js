@@ -83,14 +83,14 @@ export default function FormEdit(){
         <div className='md:flex md:mt-7 items-start justify-center'>
           <div className='w-full md:w-[46%] md:mr-[8%] py-2'>
             <h3 className='text-xl font-medium pb-1'>Description</h3>
-            <input 
-              className='w-full py-1 px-2 h-40 text-start border-2 rounded-lg border-gray-200'
+            <textarea
+              className='w-full break-normal py-1 px-2 placeholder:text-start h-40 border-2 rounded-lg border-gray-200'
               id='actDescription'
               value={values.actDescription}
               onChange={handleChange}
-            //   placeholder={values.actDescription}
+              placeholder="Input Description"
               type='text'
-              />
+            ></textarea>
           </div>
           <div className="w-full md:w-[46%] py-2">
             <h3 className='text-xl font-medium pb-2'>Category</h3>

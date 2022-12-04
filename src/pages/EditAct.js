@@ -64,7 +64,6 @@ export default function FormEdit(){
               id="actName"
               value={values.actName}
               onChange={handleChange}
-            //   placeholder={from}
               type='text'
               />
           </div>
@@ -75,7 +74,6 @@ export default function FormEdit(){
               id='actDate'
               value={values.actDate}
               onChange={handleChange}                
-            //   placeholder={values.actDate}
               type="date"
               />
           </div>
@@ -100,7 +98,6 @@ export default function FormEdit(){
               id='actCategory'
               value={values.actCategory}
               onChange={handleChange}
-            //   placeholder={values.actCategory}
               type='text'
             />
           </div>

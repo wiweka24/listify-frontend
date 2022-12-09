@@ -9,7 +9,8 @@ import ProfilePicture from '../components/profpic';
 export default function ProfileEdit() {
   const location = useLocation();
   const { user } = location.state;
-
+  const [showPicture, setShowPicture] = useState(false)
+  const URL = URI + "/user/" + 'profile'
   const [showConfirm, setShowConfirm] = useState(false)
   const [userEdit, setUserEdit] = useState({
     username: user.username,
@@ -19,7 +20,6 @@ export default function ProfileEdit() {
   })
 
   const navigate = useNavigate()
-  const URL = URI + "/user/profile"
 
   
   const handleClick = async (e) => {

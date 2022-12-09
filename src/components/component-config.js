@@ -32,5 +32,3 @@ export const dict = {
 export default function cn(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
-
-// https://backend-kelompok4.vercel.app

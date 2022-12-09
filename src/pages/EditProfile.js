@@ -9,7 +9,7 @@ import ProfilePicture from '../components/profpic';
 export default function ProfileEdit() {
   const location = useLocation();
   const { user } = location.state;
-
+  const [showPicture, setShowPicture] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [userEdit, setUserEdit] = useState({
     username: user.username,

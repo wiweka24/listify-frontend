@@ -73,7 +73,7 @@ frontend-kelompok4/
 └── ...
 ```
 
-## Fependencies
+## Dependencies
 ```shell
 react
 axios

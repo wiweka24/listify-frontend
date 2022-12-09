@@ -31,7 +31,7 @@ export default function ProfileEdit() {
     try{
       const res = await axiosInstance.patch(URL + '/'+ user._id,  
         {
-          usename: user.username,
+          username: user.username,
           email: user.email,
           password: user.password,
         })
@@ -50,6 +50,7 @@ export default function ProfileEdit() {
 
   return (
     <Fragment>
+    <ToastContainer/>
     <div className='flex w-full justify-center'>
       <div className='w-full md:w-5/6 lg:w-1/2 px-10 py-10'>
         <h1 className='flex text-4xl font-bold justify-center'>Profile</h1>

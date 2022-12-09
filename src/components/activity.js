@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect} from 'react'
 import { axiosInstance, URI, notLogin, dict} from "./component-config";
 import Modal from "../components/modal"
+import moment from 'moment'
 
 export default function Activity({searchData}) {
   const [activity, setActivity] = useState([])
@@ -51,7 +52,7 @@ export default function Activity({searchData}) {
                     </label>
                   </div>    
                   <div class="group-hover:text-blue-50 my-1 flex text-sm font-medium text-slate-700">
-                    {act.actDate}
+                    {moment(act.actDate).format("dddd, Do MMMM YYYY")}
                   </div>
                   <div class="w-auto text-left group-hover:text-blue-50 my-1 text-sm text-slate-700">
                     <p className="truncate">

@@ -112,7 +112,7 @@ Setting up project for local usage.
 
 ## Support File
 - [Design UI][design-file]<br/>
-- [Presentasi][ppt-file]
+- [Slide Presentasi][ppt-file]
 
 
 

@@ -50,8 +50,12 @@ export default function ProfileEdit() {
     navigate("/profile")
   }
 
-  const handleEdit = () => {
-    
+  const [picture, setPicture] = useState({
+    source:"",
+  });
+
+  const handleEdit = (pic) => {
+
   }
 
   return (
@@ -61,7 +65,7 @@ export default function ProfileEdit() {
         <h1 className='flex text-4xl font-bold justify-center'>Profile</h1>
         <div className='flex justify-center h-[18vw] lg:h-[10vw]'>
           <div className='flex justify-center h-[18vw] lg:h-[10vw]'>
-            <img className='w-24 h-24 rounded-full bg-slate-50' src='' alt=''/>
+            <img className='w-24 h-24 rounded-full bg-slate-50' src="" alt=''/>
             <button 
               className="w-24 h-24 group hover:bg-gray-200 opacity-60 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500"
               onClick={setShowPicture}>
@@ -134,7 +138,7 @@ export default function ProfileEdit() {
     <ProfilePicture
       isVisible={showPicture}
       onClose={() => setShowPicture(false)}
-      profpic = {handleEdit}>
+      profpic={() => handleEdit()}>
     </ProfilePicture>
 
     </Fragment>

@@ -101,9 +101,12 @@ Setting up project for local usage.
 - [Design UI][design-file]<br/>
 - [Presentasi][ppt-file]
 
+
+
+
 [backend-side]: https://github.com/Hapsarip/api-crud-kelompok4
 [listify-page]: https://listifyY.vercel.app/#/
 [node-js]: https://nodejs.org/en/download/
 [design-file]: https://www.figma.com/file/mYANo06pmE27YNkZK8TPb8/FE-PAW-Kelompok-4?node-id=0%3A1&t=C7szVUn5GEn7dK4S-1
 [ppt-file]: https://docs.google.com/presentation/d/1OA5iKPMLR1K8ttZ1dSMloB1PQbUx3Vknz8xOXvhS39Q/edit?usp=sharing
-[listify-gif]: https://
+[listify-gif]: https://user-images.githubusercontent.com/70740913/206736523-34c932b4-33f1-4a85-bc8a-ffedef646cfd.mp4

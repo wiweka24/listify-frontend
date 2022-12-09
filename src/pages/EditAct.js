@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { axiosInstance ,URI, toastifyConfig } from "../components/component-config";
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,12 +8,12 @@ export default function FormEdit(){
   const navigate = useNavigate();
   const location = useLocation();
   const [showConfirm, setShowConfirm] = useState(false)
-  const {actToShow} =location.state;
+  const {actToShow} = location.state;
 
   const [values, setValues] = useState({
     actId: actToShow.act._id,
     actName: actToShow.act.actName,
-    actDate: actToShow.act.actDate,//.toISOString().subString(0.10),
+    actDate: actToShow.act.actDate,
     actCategory: actToShow.act.actCategory,
     actDescription: actToShow.act.actDescription,
   });
@@ -25,7 +25,6 @@ export default function FormEdit(){
   };
   
   const handleSubmit = async (e) => {
-    // e.preventDefault()
     try{
       const res = await axiosInstance.patch(URL,  
         {
@@ -72,7 +71,7 @@ export default function FormEdit(){
             <input
               className="w-full py-1 px-1 border-2 rounded-lg border-gray-200"
               id='actDate'
-              value={values.actDate}
+              value={values.actDate.slice(0,10)}
               onChange={handleChange}                
               type="date"
               />

@@ -55,6 +55,9 @@ frontend-kelompok4/
 |   ├── img/
 |   └── pages/
 |   |   ├── Activity.js
+|   |   ├── Calendar.js
+|   |   ├── EditAct.js
+|   |   ├── EditProfile.js
 |   |   ├── Form.js
 |   |   ├── Homepage.js
 |   |   ├── Login.js
@@ -68,6 +71,15 @@ frontend-kelompok4/
 ├── package.json
 ├── tailwind.config.json
 └── ...
+```
+
+## Fependencies
+```shell
+react
+axios
+moment
+react-toastify
+tailwindcss
 ```
 
 ## Prerequisites

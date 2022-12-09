@@ -2,6 +2,7 @@ import Activity from '../components/activity'
 import { SearchIcon, AddBtnIcon } from "../img"
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Dropdown from '../components/dropdown';
 
 export default function Activities() {
   const [data, setData] = useState('')
@@ -13,11 +14,17 @@ export default function Activities() {
 
   return (
     <div className='w-full flex-col items-top justify-center lg:w-full'>
-      <div className='overflow-hidden flex justify-between bg-white w-full p-4 border-2 border-gray-100 mx-auto'>
+      <div className='items-center overflow-hidden flex justify-between bg-white w-full p-4 border-2 border-gray-100 mx-auto'>
             
         <h1 className='justify-center py-4 px-5 items-center text-3xl font-bold'>Activity List</h1>
             
-        <div className="flex items-center">
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-2 items-center'>
+          
+          <div className='md:order-first order-last mr-5 items-center '>
+            <Dropdown />
+          </div>
+          
+          <div className="flex items-center">
           <div className="flex items-center bg-blue-500 leading-6 h-10 rounded-full ring-1 ring-slate-200 shadow-sm active:scale-[0.98]">
             <div className="ml-3 w-5 h-5">
               <SearchIcon/>
@@ -37,7 +44,8 @@ export default function Activities() {
             to='/form'
             >
             <AddBtnIcon/>
-          </Link>    
+          </Link>
+          </div>
 
         </div>
       </div>

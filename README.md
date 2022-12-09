@@ -79,6 +79,7 @@ react
 axios
 moment
 react-toastify
+react-dotenv
 tailwindcss
 ```
 

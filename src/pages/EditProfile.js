@@ -1,16 +1,20 @@
 import { useState, Fragment } from 'react'
-import { EditIcon, Avatar1, Avatar2, Avatar3, Avatar4, Avatar5, Avatar6 } from '../img'
-import { axiosInstance, URI, toastifyConfig } from "../components/component-config"
+
 import { useNavigate, useLocation } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
+
+import { axiosInstance, URI, toastifyConfig } from "../components/component-config"
 import Confirm from '../components/confirmation'
 import ProfilePicture from '../components/profpic';
+import { EditIcon } from '../img'
 
 export default function ProfileEdit() {
+  const navigate = useNavigate()
   const location = useLocation();
   const { user } = location.state;
+  const URL = URI + "/user/profile"
+
   const [showPicture, setShowPicture] = useState(false)
-  const URL = URI + "/user/" + 'profile'
   const [showConfirm, setShowConfirm] = useState(false)
   const [userEdit, setUserEdit] = useState({
     username: user.username,
@@ -19,9 +23,6 @@ export default function ProfileEdit() {
     about: user.about
   })
   const [profpic, setProfpic] = useState(user.profilepic)
-
-  const navigate = useNavigate()
-
   
   const handleClick = async (e) => {
     try {
@@ -56,10 +57,10 @@ export default function ProfileEdit() {
     <div className='flex w-full justify-center'>
       <div className='w-full md:w-5/6 lg:w-1/2 px-10 py-10'>
         <h1 className='flex text-4xl font-bold justify-center pb-2'>Profile</h1>
-        <div className='flex justify-center h-[18vw] lg:h-[10vw]'>
-          <img className='w-24 h-24 rounded-full bg-slate-50' src={profpic} alt=''/>
+        <div className='flex justify-center h-[18vw] lg:h-[8vw]'>
+          <img className='auto rounded-full bg-slate-50' src={profpic} alt=''/>
           <button 
-            className="w-24 h-24 group hover:bg-gray-200 opacity-60 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500"
+            className="h-[18vw] w-[18vw] lg:h-[8vw] lg:w-[8vw] group hover:bg-gray-200 opacity-60 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500"
             onClick={setShowPicture}>
             <div className='hidden group-hover:block w-10'>
               <EditIcon/>

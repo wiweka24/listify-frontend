@@ -5,7 +5,7 @@ export const axiosInstance = axios.create({
   withCredentials: true
 })
 
-export const URI = "http://localhost:5000"
+export const URI = process.env.REACT_APP_API_DOMAIN
 
 export const notLogin = () => {
   const navigate = useNavigate
@@ -32,5 +32,3 @@ export const dict = {
 export default function cn(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
-
-// https://backend-kelompok4.vercel.app

@@ -14,6 +14,8 @@ import NotFound from './pages/Notfound'
 import Homepage from './pages/Homepage'
 import FormEdit from './pages/EditAct'
 import ProfileEdit from './pages/EditProfile'
+// import * as dotenv from 'dotenv'
+// dotenv.config()
 
 export default function App() {
   return (

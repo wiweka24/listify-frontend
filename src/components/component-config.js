@@ -5,7 +5,7 @@ export const axiosInstance = axios.create({
   withCredentials: true
 })
 
-export const URI = "http://localhost:5000"
+export const URI = process.env.REACT_APP_API_DOMAIN
 
 export const notLogin = () => {
   const navigate = useNavigate

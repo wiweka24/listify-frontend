@@ -3,7 +3,7 @@ import { axiosInstance, URI, notLogin, dict} from "./component-config";
 import Modal from "../components/modal"
 import moment from 'moment'
 
-export default function Activity({searchData}) {
+export default function Activity({searchData, category}) {
   const [activity, setActivity] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [actToShow, setActToShow] = useState({act:{
@@ -12,17 +12,22 @@ export default function Activity({searchData}) {
   }})
   const URL = URI + "/activity"
 
-  useEffect(() => {  
+  useEffect(() => {
+
     (async () => {
-    try {
-      const res = await axiosInstance.get(URL + '?search='
-        + searchData)
-      setActivity(res.data.data.activity)
-    } catch(err) {
-      notLogin()
-    }
-    })()
-  }, [searchData, showModal])
+      try {
+        console.log(URL + 
+          '?search=' + searchData + 
+          '&category=' + category)  
+        const res = await axiosInstance.get(URL + 
+          '?search=' + searchData + 
+          '&category=' + category)
+        setActivity(res.data.data.activity)
+      } catch(err) {
+        notLogin()
+      }
+      })()
+  }, [searchData, showModal, category])
 
   const handleClick = (act) => {
     setActToShow(act)

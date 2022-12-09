@@ -37,7 +37,7 @@ export default function Profile() {
       <div className='w-full md:w-5/6 lg:w-1/2 px-10 py-10'>
         <h1 className='flex text-4xl font-bold justify-center'>Profile</h1>
         <div className='flex justify-center h-[18vw] lg:h-[10vw]'>
-          <ProfileIcon/>
+          <img className='w-24 h-24 rounded-full bg-slate-50' src={user.profilepic} alt=''/>
         </div>
         <div className=''>
           <h3 className='text-xl font-semibold'>About</h3>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
-import Logo from '../img/note.png'
+import { Logo } from '../img'
 import { URI } from './component-config';
 
 export default function Nav() {

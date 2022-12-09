@@ -11,32 +11,32 @@ export default function Calendar() {
 	const currentDate = dayjs()
 	const [today, setToday] = useState(currentDate)
 	const [selectDate, setSelectDate] = useState(currentDate)
-    const [activity, setActivity] = useState([])
-    const [showModal, setShowModal] = useState(false)
-    const [actToShow, setActToShow] = useState({act:{
-        _id: "",
-        actStatus: ""
-      }})
-    const URL = URI + "/activity"
-    
-    const handleClick = (act) => {
-        setActToShow(act)
-        setShowModal(true)
-      }
+  const [activity, setActivity] = useState([])
+  const [showModal, setShowModal] = useState(false)
+  const [actToShow, setActToShow] = useState({act:{
+      _id: "",
+      actStatus: ""
+    }})
+  const URL = URI + "/activity"
+  
+  const handleClick = (act) => {
+      setActToShow(act)
+      setShowModal(true)
+    }
 
-    useEffect(() => {  
-        (async () => {
-        try {
-            const res = await axiosInstance.get(URL)
-            setActivity(res.data.data.activity)
-        } catch(err) {
-            console.log(err)
-        }
-        })()
-    }, [showModal])
+  useEffect(() => {  
+      (async () => {
+      try {
+          const res = await axiosInstance.get(URL + '?date=' + selectDate.$d)
+          setActivity(res.data.data.activity)
+      } catch(err) {
+          console.log(err)
+      }
+      })()
+  }, [showModal, selectDate])
 
 	return (
-        <div className="flex w-full h-full md:-mt-[80px]">
+    <div className="flex w-full h-full md:-mt-[80px]">
 		<div className="md:grid md:grid-cols-2 sm:grid-cols-1 md:divide-x gap-10 justify-center mx-auto w-[90%] h-screen items-center">
 			<div className="w-full h-96">
 				<div className="flex justify-between items-center">

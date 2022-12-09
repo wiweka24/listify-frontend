@@ -36,7 +36,7 @@ export default function Activity({searchData}) {
           <Fragment>
 
             <button 
-              className="w-full hover:bg-blue-500 group hover:ring-blue-500 hover:shadow-md md:p-0 bg-white ring-1 ring-slate-200 shadow-sm"
+              className="w-full hover:bg-blue-400 group hover:ring-blue-400 hover:shadow-md md:p-0 bg-white ring-1 ring-slate-200 shadow-sm"
               id={act.actName.toString()} 
               onClick={() => handleClick({act})}>
               <article className="w-auto flex space-x-6 my-7 mx-8">

@@ -62,7 +62,7 @@ export default function Modal({isVisible, onClose, actToShow}) {
               <div>
                 {actToShow.act.actName}
               </div>
-              <div className='relative flex'>
+              <div className='relative flex items-center'>
                 <Link to='/form-edit' state={{ actToShow }}>
                     <div className="ml-2 w-8 h-8 active:scale-[0.98]">
                         <EditIcon/>

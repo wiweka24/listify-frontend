@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
 import { axiosInstance ,URI, toastifyConfig } from "../components/component-config";
 import { ToastContainer, toast } from 'react-toastify';
+import Confirm from "../components/confirmation";
 
 export default function FormEdit(){
-  
   const navigate = useNavigate();
   const location = useLocation();
+  const [showConfirm, setShowConfirm] = useState(false)
   const {actToShow} =location.state;
 
   const [values, setValues] = useState({
@@ -24,7 +25,7 @@ export default function FormEdit(){
   };
   
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     try{
       const res = await axiosInstance.patch(URL,  
         {
@@ -47,7 +48,7 @@ export default function FormEdit(){
   }
 
   return(
-    <form onSubmit={handleSubmit}>
+    <Fragment>
     <ToastContainer/>
     <div className='flex w-full justify-center'>
       <div className='w-full md:w-5/6 lg:w-1/2 px-10 py-10'>
@@ -63,7 +64,6 @@ export default function FormEdit(){
               id="actName"
               value={values.actName}
               onChange={handleChange}
-            //   placeholder={from}
               type='text'
               />
           </div>
@@ -74,7 +74,6 @@ export default function FormEdit(){
               id='actDate'
               value={values.actDate}
               onChange={handleChange}                
-            //   placeholder={values.actDate}
               type="date"
               />
           </div>
@@ -83,14 +82,14 @@ export default function FormEdit(){
         <div className='md:flex md:mt-7 items-start justify-center'>
           <div className='w-full md:w-[46%] md:mr-[8%] py-2'>
             <h3 className='text-xl font-medium pb-1'>Description</h3>
-            <input 
-              className='w-full py-1 px-2 h-40 text-start border-2 rounded-lg border-gray-200'
+            <textarea
+              className='w-full break-normal py-1 px-2 placeholder:text-start h-40 border-2 rounded-lg border-gray-200'
               id='actDescription'
               value={values.actDescription}
               onChange={handleChange}
-            //   placeholder={values.actDescription}
+              placeholder="Input Description"
               type='text'
-              />
+            ></textarea>
           </div>
           <div className="w-full md:w-[46%] py-2">
             <h3 className='text-xl font-medium pb-2'>Category</h3>
@@ -99,7 +98,6 @@ export default function FormEdit(){
               id='actCategory'
               value={values.actCategory}
               onChange={handleChange}
-            //   placeholder={values.actCategory}
               type='text'
             />
           </div>
@@ -109,7 +107,7 @@ export default function FormEdit(){
           <button
               className="w-3/5 md:w-2/5 bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-400 duration-500"
               type='submit'
-              > Edit
+              onClick={() => setShowConfirm(true) }> Edit
           </button>
         </div>
         <div className='mt-5 flex justify-center'>
@@ -122,6 +120,14 @@ export default function FormEdit(){
 
       </div>
     </div>
-    </form>
-    )
+
+    <Confirm 
+      isVisible={showConfirm} 
+      onClose={() => setShowConfirm(false)}
+      text = "Edit Activity"
+      loc = {handleSubmit}>      
+    </Confirm>
+
+    </Fragment>
+  )
 }

@@ -58,7 +58,7 @@ export default function Modal({isVisible, onClose, actToShow}) {
         <div className='overflow-auto bg-white p-6 rounded-3xl'>
 
           <div className="py-6 px-3 text-star mx-auto items-center justify-center">
-            <div className={"flex justify-between font-bold text-2xl text-white w-[98%] py-8 px-6 rounded-xl " + colorStatus}>
+            <div className={"flex justify-between font-bold text-2xl text-white w-full py-8 px-6 rounded-xl " + colorStatus}>
               <div>
                 {actToShow.act.actName}
               </div>

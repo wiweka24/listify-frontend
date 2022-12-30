@@ -92,7 +92,7 @@ Setting up project for local usage.
     ```shell
     https://github.com/wiweka24/frontend-kelompok4.git
     ```
-    if using SSS
+    if using SSH
     ```shell
     git@github.com:wiweka24/frontend-kelompok4.git
     ```
